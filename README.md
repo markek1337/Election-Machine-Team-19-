@@ -1,1 +1,1 @@
-# Election-Machine-Team-19-
+Team members: Edgar Luks, Vjatšeslav Semjonov, Mark Petrov
