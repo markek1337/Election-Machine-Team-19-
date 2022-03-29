@@ -2,21 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Hello App Engine</title>
+    <title>Login</title>
   </head>
 
   <body>
-    <h1>Hello App Engine!</h1>
-
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='html/login.html'>Login</a></td>
-      </tr>
-    </table>
-    <!-- <h2>Register</h2>
+    <h1>Authorization</h1>
+	<h2>Log In</h2>
+  <form action="/loginuser" method="post">
+    	Username: <input type="text" name="username"><br>
+    	Password: <input type="password" name="password"><br>
+    	<input type="submit" name="send" value="Log In">
+    </form>
+    <!-- <br>
+    <h2>Register</h2>
     <form action="/adduser" method="post">
     	Username: <input type="text" name="user"><br>
     	Password: <input type="password" name="pass"><br>

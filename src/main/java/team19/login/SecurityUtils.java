@@ -1,4 +1,4 @@
-package team19.Login;
+package team19.login;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +12,7 @@ public class SecurityUtils {
 		String result = "";
 		
 		try {
-			MessageDigest md = MessageDigest.getInstance("SHA=256");
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
 			
 			byte [] saltBytes = Base64.getDecoder().decode(salt);
 			md.update(saltBytes);
