@@ -1,37 +1,29 @@
 package team19.dao;
 
 import java.sql.Connection;
-<<<<<<< Updated upstream
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
-public class Dao {
-	
-	private Connection conn;
-	
-=======
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import data.Answers;
+import team19.data.Answers;
 
 
 
 public class Dao {
 	private Connection conn;
->>>>>>> Stashed changes
+
 	public Dao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-<<<<<<< Updated upstream
-=======
+
+
 			// TODO Auto-generated catch block
->>>>>>> Stashed changes
+
 			e.printStackTrace();
 		}
 	}
@@ -43,7 +35,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< Updated upstream
+
 	
 	public void addUser (String username, String password, String salt) {
 
@@ -106,7 +98,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 		return result;
-=======
+	}
 	public int saveAnswers(Answers answers) {
 		Statement stmt=null;
 		int count=0;
@@ -140,6 +132,5 @@ public class Dao {
 			e.printStackTrace();
 		}
 		return list;
->>>>>>> Stashed changes
 	}
 }

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import team19.dao.Dao;
-import data.Answers;
+import team19.data.Answers;
 
 
 @WebServlet(
