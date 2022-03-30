@@ -1,37 +1,21 @@
-package team19.dao;
+package dao;
 
 import java.sql.Connection;
-<<<<<<< Updated upstream
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class Dao {
-	
-	private Connection conn;
-	
-=======
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import data.Answers;
-
 
 
 public class Dao {
 	private Connection conn;
->>>>>>> Stashed changes
 	public Dao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
-<<<<<<< Updated upstream
-=======
 			// TODO Auto-generated catch block
->>>>>>> Stashed changes
 			e.printStackTrace();
 		}
 	}
@@ -43,71 +27,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< Updated upstream
-	
-	public void addUser (String username, String password, String salt) {
-
-		String sql = "insert into useraccount (username, hashedpassword, salt) values (?, ?, ?)";
-		
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, username);
-			stmt.setString(2, password);
-			stmt.setString(3, salt);
-			
-			stmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public String getUserSalt (String username) {
-		
-		String result = "";
-		String sql = "select salt from useraccount where username = ?";
-		
-		try {
-			
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, username);
-			
-			ResultSet rs = stmt.executeQuery();
-			
-			if (rs.next()) {
-				result = rs.getString("salt");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
-	
-	public String getUserPasswordHash (String username) {
-		
-		String result = "";
-		String sql = "select hashedpassword from useraccount where username = ?";
-		
-		try {
-			
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, username);
-			
-			ResultSet rs = stmt.executeQuery();
-			
-			if (rs.next()) {
-				result = rs.getString("hashedpassword");
-			}
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
-=======
-	public int saveAnswers(Answers answers) {
+	public int saveAnswer(Answers answers) {
 		Statement stmt=null;
 		int count=0;
 		try {
@@ -140,6 +60,5 @@ public class Dao {
 			e.printStackTrace();
 		}
 		return list;
->>>>>>> Stashed changes
 	}
 }
