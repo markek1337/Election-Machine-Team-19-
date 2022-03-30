@@ -6,7 +6,11 @@
 </head>
 <body>
 <form action='./addanswer' method='post'>
-Answer: <input type='text' name='useranswer' value=''><br>
+<label for="question">Question ID:</label>
+  <input type="number" id="question" name="KYSYMYS_ID" min="1" max="19">
+Answer: <input type='text' name='VASTAUS' value=''><br>
+Comment: <input type='text' name='KOMMENTTI' value=''><br>
+
 <input type='submit' name='ok' value='OK'>
 </form>
 </body>
