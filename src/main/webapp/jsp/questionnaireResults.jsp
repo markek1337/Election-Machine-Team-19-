@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
 
+    
     <%@ page import="java.util.ArrayList" %>   
 	<%@ page import="team19.data.Question" %>   
 	<%@ page import="team19.data.Answer" %>
@@ -272,14 +273,7 @@
 
 
         <div class="container2">           
-            <div class="container4">  
-            
-		    <h5>DISCLAIMER: Neither the 'Global Herald Newspaper' or 'HAMK's Finest'
-                are to be held liable for any views or comments expressed by the candidates 
-                or users of this site. Your data is confidential and will not be shared or
-                sold in any capacity. All rights reserved.</h5>
-            
-            </div>
+
 		    
             <hr>      
     
@@ -294,7 +288,9 @@
         </div>
 
     </div>  
-    
+
+
+        
                 <script type="text/javascript">
                     function ShowHideToggle1(btnCandResults1) {
                         var dvCandResults1 = document.getElementById("dvCandResults1");

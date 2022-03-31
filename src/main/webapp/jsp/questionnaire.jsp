@@ -35,7 +35,7 @@
 
         <div class="container2">            
 
-            <form id="form" action="/SubmitAnswer" method="POST">				
+            <form id="form" action="/team19/SubmitAnswer" method="POST">				
                
                 <br>                 
 	            
