@@ -14,6 +14,7 @@ public class Candidates implements Serializable {
 	private String idea;
 	private String occupation;
 //	hello world
+	// pizdec
 	
 	
 	public int getId() {
