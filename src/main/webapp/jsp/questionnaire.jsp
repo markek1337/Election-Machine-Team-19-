@@ -287,7 +287,7 @@
 		
 		function toMain()
 		{
-			window.location = "/index.jsp";
+			window.location = "/index.html";
 		}
 
 		// SOME USEFUL LINES:
