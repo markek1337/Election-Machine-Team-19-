@@ -23,7 +23,6 @@ if (id!=null) {
 
  
          <a href="../ShowQuestions">Questionnaire</a>
-         <a href="../ShowCandidates">Candidates</a>
          <input type="submit" value="Logout" >
 
 
@@ -32,8 +31,7 @@ if (id!=null) {
 else {
 	%>
         <a href="../ShowQuestions">Questionnaire</a>
-        <a href="../ShowCandidates">Candidates</a>
-        <a href="../loginPage.jsp">Login</a>
+        <a href="../loginPage.html">Login</a>
         
      <%
 }

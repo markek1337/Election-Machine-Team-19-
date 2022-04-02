@@ -84,7 +84,6 @@
 
 	<script type="text/javascript">
 	
-	// Event Listeners: Suspending button default functions => Validation will not work.
 		document.getElementById("start").addEventListener("click", function(event){ //will prevent submission with these buttons
 		event.preventDefault()});
 	
@@ -123,9 +122,7 @@
 			q_id_prev = q_id - 1;
 			div_id_prev = string + q_id_prev;
 			
-			/* AD - Click counter (displaying) was removed. Was only for debugging purposes
-		    document.getElementById("clicks").innerHTML = div_id;
-			*/
+		
 		    
 		    var div = document.getElementById(div_id); // Event Listener for question div.
 			div.style.display = 'block';
@@ -256,7 +253,7 @@
 		
 		function toMain()
 		{
-			window.location = "/index.jsp";
+			window.location = "/index.html";
 		}
 	</script>
 

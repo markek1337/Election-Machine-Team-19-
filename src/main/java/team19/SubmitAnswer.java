@@ -78,8 +78,6 @@ public class SubmitAnswer extends HttpServlet {
 
 		request.setAttribute("selectionList", selectionList);		
 
-//		Integer.valueOf(id);
-
 //		IF U ARE LOGGED IN AS A CANDIDATE
 		if (isCandidate) {
 			RequestDispatcher rd = request.getRequestDispatcher("");
