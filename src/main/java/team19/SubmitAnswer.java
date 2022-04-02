@@ -82,7 +82,7 @@ public class SubmitAnswer extends HttpServlet {
 
 //		IF U ARE LOGGED IN AS A CANDIDATE
 		if (isCandidate) {
-			RequestDispatcher rd = request.getRequestDispatcher("/SaveAnswers");
+			RequestDispatcher rd = request.getRequestDispatcher("");
 			rd.forward(request, response);
 			
 		}

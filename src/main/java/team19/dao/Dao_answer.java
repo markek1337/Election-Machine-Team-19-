@@ -116,43 +116,8 @@ public class Dao_answer {
 		return null;
 	}
 
-	public ArrayList<Answer> updateAnswer(Answer a) {
 
-		System.out.println("updateAnswer running");
-		try {
-			String sql="UPDATE answers SET answer=? WHERE CANDIDATE_ID=? AND QUESTION_ID=?;";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, a.getANSWER());
-			pstmt.setInt(2, a.getCANDIDATE_ID());
-			pstmt.setInt(3, a.getQUESTION_ID());
-			pstmt.executeUpdate();
-			return readAllAnswer();
-		}
-		catch(SQLException e) {
-			System.out.println("Operation error updateAnswer()--" + url + "\nUser: " + user + " / " + pass);
-			return null;
-		}
-	}
 	
-	
-	public ArrayList<Answer> deleteAnswer(String CANDIDATE_ID, String QUESTION_ID) {
-
-		System.out.println("deleteAnswer() running");
-		try {
-			String sql="DELETE FROM answers WHERE CANDIDATE_ID=? AND QUESTION_ID=?;";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, CANDIDATE_ID);
-			pstmt.setString(2, QUESTION_ID);
-			pstmt.executeUpdate();
-			System.out.println("answers table row with CANDIDATE_ID: " + CANDIDATE_ID + "and QUESTION_ID: "
-					+ QUESTION_ID + " has been deleted successfully");
-			return readAllAnswer();
-		}
-		catch(SQLException e) {
-			System.out.println("Operation error deleteAnswer()--" + url + "\nUser: " + user + " / " + pass);
-			return null;
-		}
-	}
 
 	
 	public Answer readAnswer(String CANDIDATE_ID) {
@@ -176,6 +141,4 @@ public class Dao_answer {
 			return null;
 		}
 	}
-	
-	
 }

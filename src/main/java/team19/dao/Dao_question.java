@@ -43,63 +43,7 @@ public class Dao_question {
 		}
 	}
 	
-	public ArrayList<Question> readNewQuestions() {
-		System.out.println("readNewQuestions()");
-		ArrayList<Question> list=new ArrayList<>();
-		try {
-			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from new_questions ORDER BY NEW_QUESTION_ID DESC;");
-			while (RS.next()){
-				Question q=new Question();
-				q.setId(RS.getInt("NEW_QUESTION_ID"));
-				q.setQuestion(RS.getString("NEW_QUESTION"));
-				list.add(q);
-			}
-			return list;
-		}
-		catch(SQLException e) {
-			return null;
-		}
-	}
-	public void insertQuestion(String q)
-	{
-		try {
-			String sql="INSERT INTO electionmachine.new_questions (NEW_QUESTION) VALUES (?)";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, q); 
-				pstmt.executeUpdate();
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void insertNewQuestion(Question question){
-		try {
-			System.out.println("insertNewQuestion");
-			String sql="INSERT INTO new_questions (NEW_QUESTION) VALUES (?);";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, question.getQuestion());
-			pstmt.executeUpdate();
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void deleteNewQuestion(String question){
-		try {
-			System.out.println("insertNewQuestion");
-			String sql="Delete FROM new_questions WHERE NEW_QUESTION_ID=?;"; // delete where ID=?
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, question);
-			pstmt.executeUpdate();
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	public ArrayList<Question> readAllQuestion() {
 		System.out.println("readAllQuestion()");
 		ArrayList<Question> list=new ArrayList<>();
@@ -119,33 +63,7 @@ public class Dao_question {
 			return null;
 		}
 	}
-	public ArrayList<Question> updateQuestion(Question q) {
-		System.out.println("updateQuestion(Question q)");
-		try {
-			String sql="update questions set question=? where id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, q.getQuestion());
-			pstmt.setInt(2, q.getId());
-			pstmt.executeUpdate();
-			return readAllQuestion();
-		}
-		catch(SQLException e) {
-			return null;
-		}
-	}
-	public ArrayList<Question> deleteQuestion(String id) {
-		System.out.println("deleteQuestion(String id)");
-		try {
-			String sql="delete from question where id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
-			return readAllQuestion();
-		}
-		catch(SQLException e) {
-			return null;
-		}
-	}
+
 
 	public Question readQuestion(String id) {
 		Question f=null;
