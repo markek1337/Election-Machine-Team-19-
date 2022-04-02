@@ -19,20 +19,18 @@
         <h2>Your Results</h2>
        
 	        <h5>Thank you for successfully completing our questionnaire!
-	            This section covers your results.
 	            <br><br>
-	            By analysing your questionnaire answers, this election machine 
-	            utilises innovative algorithm techniques to match you with the candidate 
-	            that suits you best. Carry on reading below to review your answers.
+	            Now you can see best candidates for you.
 	            <br>           
 	        </h5>
         
 
-                <h6>Your answers (click to view):</h6>
+<%--                 <h6>Your answers (click to view):</h6>
           
 
                 <input class = "buttonShowHide2 button1" id = "btnUserResults" 
                 type="button" value="ANSWERS" onclick="ShowHideToggle4(this)" >                
+--%>
 
             <br>
                 

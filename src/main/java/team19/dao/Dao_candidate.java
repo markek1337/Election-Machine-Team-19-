@@ -69,6 +69,5 @@ public class Dao_candidate {
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
+	}	
 }

@@ -27,10 +27,6 @@
             <form id="form" action="/SubmitAnswer" method="POST">				
                
                 <br>                 
-	            
-	            
-
-            
 					<span id="spnError" class="error" style="display: none">Please select.</span>
                      
 
@@ -55,7 +51,7 @@
                                     <input type = "radio" name = "selected${question.id}" value = "2" required>
                                     </label>
                                     <label> <b>(3)</b>
-                                    <input type = "radio" name = "selected${question.id}" value = "3" required> <!-- checked ="checked" - FOR Testing purposes -->
+                                    <input type = "radio" name = "selected${question.id}" value = "3" required> 
                                     </label>
                                     <label> <b>(4)</b>
                                     <input type = "radio" name = "selected${question.id}" value = "4" required>

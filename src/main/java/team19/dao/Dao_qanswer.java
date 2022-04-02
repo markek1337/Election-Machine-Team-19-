@@ -63,10 +63,4 @@ public class Dao_qanswer {
 			return null;
 		}
 	}
-	
-
-
-	
-
-
 }

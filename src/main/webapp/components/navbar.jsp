@@ -31,7 +31,7 @@ if (id!=null) {
 else {
 	%>
         <a href="../ShowQuestions">Questionnaire</a>
-        <a href="../loginPage.html">Login</a>
+        <a href="/html/login.html">Login</a>
         
      <%
 }
