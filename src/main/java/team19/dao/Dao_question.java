@@ -105,12 +105,12 @@ public class Dao_question {
 		ArrayList<Question> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from KYSYMYKSET");
+			ResultSet RS=stmt.executeQuery("select * from questions");
 			System.out.println("RS: " + RS);
 			while (RS.next()){
 				Question q=new Question();
-				q.setId(RS.getInt("KYSYMYS_ID"));
-				q.setQuestion(RS.getString("KYSYMYS"));
+				q.setId(RS.getInt("QUESTION_ID"));
+				q.setQuestion(RS.getString("QUESTION"));
 				list.add(q);
 			}
 			return list;
@@ -122,7 +122,7 @@ public class Dao_question {
 	public ArrayList<Question> updateQuestion(Question q) {
 		System.out.println("updateQuestion(Question q)");
 		try {
-			String sql="update KYSYMYKSET set KYSYMYS=? where id=?";
+			String sql="update questions set question=? where id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, q.getQuestion());
 			pstmt.setInt(2, q.getId());
@@ -136,7 +136,7 @@ public class Dao_question {
 	public ArrayList<Question> deleteQuestion(String id) {
 		System.out.println("deleteQuestion(String id)");
 		try {
-			String sql="delete from KYSYMYS where id=?";
+			String sql="delete from question where id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -150,14 +150,14 @@ public class Dao_question {
 	public Question readQuestion(String id) {
 		Question f=null;
 		try {
-			String sql="select * from KYSYMYKSET where id=?";
+			String sql="select * from questions where id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Question();
-				f.setId(RS.getInt("KYSYMYS_ID"));
-				f.setQuestion(RS.getString("KYSYMYS"));
+				f.setId(RS.getInt("QUESTION_ID"));
+				f.setQuestion(RS.getString("QUESTION"));
 			}
 			return f;
 		}

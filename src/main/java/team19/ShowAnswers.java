@@ -1,4 +1,5 @@
 package team19;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -54,7 +55,7 @@ public class ShowAnswers extends HttpServlet {
 		}
 		request.setAttribute("answerlist", alist);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/survey.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/survey.jsp");
 		rd.forward(request, response);
 	}
 

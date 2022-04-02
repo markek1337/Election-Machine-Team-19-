@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
 
-    
+    <%@ include file="../components/meta.jsp" %>
     <%@ page import="java.util.ArrayList" %>   
 	<%@ page import="team19.data.Question" %>   
 	<%@ page import="team19.data.Answer" %>
@@ -9,40 +9,32 @@
   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
      
     <title>Questionnaire Results</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+    <%@ include file="../components/header.jsp" %> 
+   
 </head>
 <body>
 
+   <%@ include file="../components/navbar.jsp" %> 
 
-    <div class="container">
-
-        <div class="container6"> 
+        
         <h2>Your Results</h2>
-        </div>
        
-        <div class="container5">
 	        <h5>Thank you for successfully completing our questionnaire!
 	            This section covers your results.
 	            <br><br>
-				In this section we will try to find the best candidate for you.
+	            By analysing your questionnaire answers, this election machine 
+	            utilises innovative algorithm techniques to match you with the candidate 
+	            that suits you best. Carry on reading below to review your answers.
 	            <br>           
 	        </h5>
-        </div>
         
 
-            <div class="container7b">
-                <h6 class = "textRestyle1">Your answers (click to view):</h6>
-            </div>  
-
-            <div class="container3">
+                <h6>Your answers (click to view):</h6>
+          
 
                 <input class = "buttonShowHide2 button1" id = "btnUserResults" 
                 type="button" value="ANSWERS" onclick="ShowHideToggle4(this)" >                
 
-            </div>
             <br>
                 
             <div id="dvUserResults" style="display: none">
@@ -65,6 +57,7 @@
             <div class="container7c">
                 <h6 class = "textRestyle1">Your top candidate matches (click to view):</h6>
             </div>
+        
                 <div class="container3">
                     <input class = "buttonShowHide button1" id = "btnCandResults1" 
                     type="button" value="1st Place" onclick="ShowHideToggle1(this)" >           
@@ -77,15 +70,13 @@
 
                 </div>
                 <br>        
-
-
                 <div id="dvCandResults1" style="display: none">               
                     <div class="container6">         
                         <h5>1st Place Match:
                         <c:out value="${requestScope.profile_1st.FName} ${requestScope.profile_1st.SName} - ${requestScope.profile_1st.party}"></c:out>                  
                             <br>
                             <br>
-                            
+                            <hr>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_1st.age}"></c:out>
@@ -100,16 +91,15 @@
                            	Reason: <c:out value="${requestScope.profile_1st.reason}"></c:out>
                            	<br>
                            	<br>
-                           	
-                        </h5>
-              
+                           	<hr>
+                        </h5>                   
                         <div class="containerCompareResults"> 
                             <input class = "buttonShowHide3 button1" id = "btnCompareResults" 
                             type="button" value="COMPARE YOUR ANSWERS" onclick="ShowHideToggle5(this)" >                
                         </div>               
                     </div>  
                 </div>  
-                
+
 	            <div id="dvCompareResults" style="display: none">
 	
 	                <div class="containerCompareAnswers">
@@ -137,16 +127,14 @@
 	                    </h5>
 	                </div>               
 	
-	            </div>             
-    
+	            </div>                   
                 <div id="dvCandResults2" style="display: none">             
-
                     <div class="container6">         
                         <h5>2nd Place Match:
                         <c:out value="${requestScope.profile_2nd.FName} ${requestScope.profile_2nd.SName} - ${requestScope.profile_2nd.party}"></c:out>                  
                             <br>
                             <br>
-                            
+                            <hr>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_2nd.age}"></c:out>
@@ -161,9 +149,8 @@
                            	Reason: <c:out value="${requestScope.profile_2nd.reason}"></c:out>
                            	<br>
                            	<br>
-                           	
-                        </h5>
-                 
+                           	<hr>
+                        </h5>              
                         <div class="containerCompareResults"> 
                             <input class = "buttonShowHide3 button1" id = "btnCompareResults2" 
                             type="button" value="COMPARE YOUR ANSWERS" onclick="ShowHideToggle6(this)" >                
@@ -199,21 +186,13 @@
 	                </div>               
 	
 	            </div>  
-                     
-
-                <!-- AD - This 'hidden div' shows the 3rd place suitable candidate.
-                        The div becomes visible once the '3rd Place Candidate'
-                        button is pressed. Conversely, the div disappears once the
-                        button is pressed again (toggle button).-->         
                 <div id="dvCandResults3" style="display: none">    
-                
-                    <!-- AD - This section shows the top suitable candidate(s)-->
-                    <div class="container6">         
+                                    <div class="container6">         
                         <h5>3rd Place Match:
                         <c:out value="${requestScope.profile_3rd.FName} ${requestScope.profile_3rd.SName} - ${requestScope.profile_3rd.party}"></c:out>                  
                             <br>
                             <br>
-                            
+                            <hr>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_3rd.age}"></c:out>
@@ -228,9 +207,9 @@
                            	Reason: <c:out value="${requestScope.profile_3rd.reason}"></c:out>
                            	<br>
                            	<br>
-                           	
+                           	<hr>
                         </h5>                                     
-                   
+       
                         <div class="containerCompareResults"> 
                             <input class = "buttonShowHide3 button1" id = "btnCompareResults3" 
                             type="button" value="COMPARE YOUR ANSWERS" onclick="ShowHideToggle7(this)" >                
@@ -239,7 +218,6 @@
                 </div>
             
                 <hr>
-
 	            <div id="dvCompareResults3" style="display: none">
 	
 	                <div class="containerCompareAnswers">
@@ -272,137 +250,113 @@
 
 
 
-        <div class="container2">           
-
-		    
-            <hr>      
-    
-            <div class="container3">
 
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>
                 
-                <button class="button-main button1"><a href="../index.html"><b>Home</b></a></button>
-
-            </div>
-        
-        </div>
-
-    </div>  
-
+                <button class="button-main button1"><a href="../index.jsp"><b>Home</b></a></button>
 
         
+
+    
                 <script type="text/javascript">
                     function ShowHideToggle1(btnCandResults1) {
                         var dvCandResults1 = document.getElementById("dvCandResults1");
                         if (btnCandResults1.value == "1st Place") {
                             dvCandResults1.style.display = "block";
                             btnCandResults1.value = "HIDE";
-                            btnCandResults1.style.backgroundColor = "#E76F51";
+                            btnCandResults1.style.backgroundColor = "#bfff00";
                             
                         } else {
                             dvCandResults1.style.display = "none";
                             btnCandResults1.value = "1st Place";
-                            btnCandResults1.style.backgroundColor = "#2A9D8F";                           
+                            btnCandResults1.style.backgroundColor = "#ffbf00";                           
                         }
                     }
            
-		            /* This is the function for the ShowHideToggle 
+		            /* AD - This is the function for the ShowHideToggle 
 		                for the 2nd Place Suitable Candidate */		          
                     function ShowHideToggle2(btnCandResults2) {
                         var dvCandResults2 = document.getElementById("dvCandResults2");
                         if (btnCandResults2.value == "2nd Place") {
                             dvCandResults2.style.display = "block";
                             btnCandResults2.value = "HIDE";
-                            btnCandResults2.style.backgroundColor = "#E76F51";
+                            btnCandResults2.style.backgroundColor = "#bfff00";
                         } else {
                             dvCandResults2.style.display = "none";
                             btnCandResults2.value = "2nd Place";
-                            btnCandResults2.style.backgroundColor = "#2A9D8F";    
+                            btnCandResults2.style.backgroundColor = "#ffbf00";    
                         }
                     }
     
 
 
-		            /* This is the function for the ShowHideToggle 
+		            /* AD - This is the function for the ShowHideToggle 
 		                for the 3rd Place Suitable Candidate */          
                     function ShowHideToggle3(btnCandResults3) {
                         var dvCandResults3 = document.getElementById("dvCandResults3");
                         if (btnCandResults3.value == "3rd Place") {
                             dvCandResults3.style.display = "block";
                             btnCandResults3.value = "HIDE";
-                            btnCandResults3.style.backgroundColor = "#E76F51";
+                            btnCandResults3.style.backgroundColor = "#bfff00";
                         } else {
                             dvCandResults3.style.display = "none";
                             btnCandResults3.value = "3rd Place";
-                            btnCandResults3.style.backgroundColor = "#2A9D8F";    
+                            btnCandResults3.style.backgroundColor = "#ffbf00";    
                         }
                     }
        
-            
-
-		            /* This is the function for the ShowHideToggle 
-		                for the User Results (answers) */             
                     function ShowHideToggle4(btnUserResults) {
                         var dvUserResults = document.getElementById("dvUserResults");
                         if (btnUserResults.value == "ANSWERS") {
                             dvUserResults.style.display = "block";
                             btnUserResults.value = "HIDE";
-                            btnUserResults.style.backgroundColor = "#E76F51";
+                            btnUserResults.style.backgroundColor = "#bfff00";
                         } else {
                             dvUserResults.style.display = "none";
                             btnUserResults.value = "ANSWERS";
-                            btnUserResults.style.backgroundColor = "#0075ac";    
+                            btnUserResults.style.backgroundColor = "#ffbf00";    
                         }
                     }
-
-
-                      /* This is the function for the ShowHideToggle 
-		                for the 1st compareResults (answers) */             
+      
                         function ShowHideToggle5(btnCompareResults) {
                         var dvCompareResults = document.getElementById("dvCompareResults");
                         if (btnCompareResults.value == "COMPARE YOUR ANSWERS") {
                             dvCompareResults.style.display = "block";
                             btnCompareResults.value = "HIDE";
-                            btnCompareResults.style.backgroundColor = "#E76F51";                          
+                            btnCompareResults.style.backgroundColor = "#bfff00";                          
                         } else {
                             dvCompareResults.style.display = "none";
                             btnCompareResults.value = "COMPARE YOUR ANSWERS";
-                            btnCompareResults.style.backgroundColor = "purple";                         
+                            btnCompareResults.style.backgroundColor = "ffbf00";                         
                         }
                     }
-                      
-                      
-                        /* This is the function for the ShowHideToggle 
-		                for the compareResults (answers) */             
+
                         function ShowHideToggle6(btnCompareResults2) {
                         var dvCompareResults2 = document.getElementById("dvCompareResults2");
                         if (btnCompareResults2.value == "COMPARE YOUR ANSWERS") {
                         	dvCompareResults2.style.display = "block";
                             btnCompareResults2.value = "HIDE";
-                            btnCompareResults2.style.backgroundColor = "#E76F51";
+                            btnCompareResults2.style.backgroundColor = "#bfff00";
                         } else {
                         	dvCompareResults2.style.display = "none";
                             btnCompareResults2.value = "COMPARE YOUR ANSWERS";
-                            btnCompareResults2.style.backgroundColor = "purple";    
+                            btnCompareResults2.style.backgroundColor = "ffbf00";    
                         }
                     }
-                        
-                        
-                        /* This is the function for the 3rd ShowHideToggle 
-		                for the compareResults (answers) */             
+                                   
                         function ShowHideToggle7(btnCompareResults3) {
                         var dvCompareResults3 = document.getElementById("dvCompareResults3");
                         if (btnCompareResults3.value == "COMPARE YOUR ANSWERS") {
                         	dvCompareResults3.style.display = "block";
                         	btnCompareResults3.value = "HIDE";
-                        	btnCompareResults3.style.backgroundColor = "#E76F51";
+                        	btnCompareResults3.style.backgroundColor = "#bfff00";
                         } else {
                         	dvCompareResults3.style.display = "none";
                         	btnCompareResults3.value = "COMPARE YOUR ANSWERS";
-                        	btnCompareResults3.style.backgroundColor = "purple";    
+                        	btnCompareResults3.style.backgroundColor = "ffbf00";    
                         }
-                    }        
-                      
+                    }                              
                 </script>
+	<%@ include file="../components/footer.jsp" %>
 </body>
 </html>

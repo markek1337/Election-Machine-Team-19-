@@ -1,5 +1,6 @@
 package team19;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class SaveAnswers extends HttpServlet {
     
 	@Override
 	public void init() {
-		dao_qanswer=new Dao_qanswer("jdbc:mysql://localhost:3306/electionmachine", "team19", "kukkuu");
+		dao_qanswer=new Dao_qanswer("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		System.out.println("");
 	}
 	
@@ -40,15 +41,12 @@ public class SaveAnswers extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		*********************************************************************************************************************************************
-//		*********** GET CANDIDATE SELECTIONS/ANSWERS ************************************************************************************************
-//		*********************************************************************************************************************************************			
 		
-//		Getting answers:
+//		Getting answers
 		@SuppressWarnings("unchecked") // Because of the type casting. => Havent casused any isseu yet!
 		ArrayList<QAnswer> selectionList = (ArrayList<QAnswer>) request.getAttribute("selectionList");
 		
-//		Saving Data to DB:
+//		Saving Data to DB
 		if(dao_qanswer.getConnection())
 		{
 //			Successful connection!
@@ -66,19 +64,10 @@ public class SaveAnswers extends HttpServlet {
 				dao_qanswer.deleteAnswers(c_id);
 				dao_qanswer.insertAllAnswer(selectionList);
 			}
-//			
-			response.sendRedirect("/candidatePortal.jsp");
-			
+		
+			response.sendRedirect("/jsp/candidatePortal.jsp");
 			
 
-//			<<< Debugging Messages >>>
-//			for (int i = 0; i < answerList.size(); i++) {		
-//				QAnswer a = answerList.get(i);
-//				a.getAnswer();
-//				System.out.println("Candidate ID: " + a.getCId());
-//				System.out.println("Question ID: " + a.getQId());
-//				System.out.println("Answer : " + a.getAnswer());
-//			}
 		}
 		else
 		{

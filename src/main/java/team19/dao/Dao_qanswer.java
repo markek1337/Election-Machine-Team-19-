@@ -48,13 +48,13 @@ public class Dao_qanswer {
 		ArrayList<QAnswer> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from VASTAUKSET");
+			ResultSet RS=stmt.executeQuery("select * from answers");
 			System.out.println("RS: " + RS);
 			while (RS.next()){
 				QAnswer a=new QAnswer();
-				a.setCId(RS.getInt("EHDOKAS_ID"));
-				a.setQId(RS.getInt("KYSYMYS_ID"));
-				a.setAnswer(RS.getInt("VASTAUS"));
+				a.setCId(RS.getInt("CANDIDATE_ID"));
+				a.setQId(RS.getInt("QUESTION_ID"));
+				a.setAnswer(RS.getInt("ANSWER"));
 				list.add(a);
 			}
 			return list;
@@ -68,17 +68,17 @@ public class Dao_qanswer {
 		System.out.println("readAnswersForCandidate()");
 		ArrayList<QAnswer> answerList = new ArrayList<QAnswer>();
 		try {
-			String sql="select a.EHDOKAS_ID, a.KYSYMYS_ID, q.KYSYMYS, a.VASTAUS from vaalikone.VASTAUKSET a join vaalikone.KYSYMYKSET q on q.KYSYMYS_ID=a.KYSYMYS_ID where EHDOKAS_ID = ?";
+			String sql="select a.CANDIDATE_ID, a.QUESTION_ID, q.QUESTION, a.ANSWER from electionmachine.answers a join electionmachine.questions q on q.QUESTION_ID=a.QUESTION_ID where CANDIDATE_ID = ?";
 			PreparedStatement stmt=conn.prepareStatement(sql);
 			stmt.setString(1, id);
 			ResultSet RS=stmt.executeQuery();
 			while(RS.next())
 			{
 				QAnswer qanswer = new QAnswer();
-				qanswer.setCId(RS.getInt("EHDOKAS_ID"));
-				qanswer.setQId(RS.getInt("KYSYMYS_ID"));
-				qanswer.setQTxt(RS.getString("KYSYMYS"));
-				qanswer.setAnswer(RS.getInt("VASTAUS"));
+				qanswer.setCId(RS.getInt("CANDIDATE_ID"));
+				qanswer.setQId(RS.getInt("QUESTION_ID"));
+				qanswer.setQTxt(RS.getString("QUESTION"));
+				qanswer.setAnswer(RS.getInt("ANSWER"));
 				answerList.add(qanswer);
 			}
 			return answerList;
@@ -92,7 +92,7 @@ public class Dao_qanswer {
 	public void insertAnswer(QAnswer a) {
 		System.out.println("insertAnswer()");
 		try {
-			String sql="insert into VASTAUS (EHDOKAS_ID, KYSYMYS_ID, VASTAUS) values (?, ?, ?)";
+			String sql="insert into answers (CANDIDATE_ID, QUESTION_ID, ANSWER) values (?, ?, ?)";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, a.getAnswer());
 			pstmt.setInt(2, a.getQId());
@@ -107,7 +107,7 @@ public class Dao_qanswer {
 	public void insertAllAnswer(ArrayList<QAnswer> answerList) {
 		System.out.println("insertAllAnswer()");
 		try {
-			String sql="insert into VASTAUS (EHDOKAS_ID, KYSYMYS_ID, VASTAUS, KOMMENTTI) values (?, ?, ?, ?)";
+			String sql="insert into answers (CANDIDATE_ID, QUESTION_ID, ANSWER, COMMENTS) values (?, ?, ?, ?)";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			
 			for (QAnswer qAnswer : answerList) {
@@ -127,7 +127,7 @@ public class Dao_qanswer {
 	public void deleteAnswers(String id) {
 		System.out.println("deleteAnswer(String id)");
 		try {
-			String sql="delete from VASTAUS where EHDOKAS_ID=?;";
+			String sql="delete from answers where CANDIDATE_ID=?;";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
@@ -140,7 +140,7 @@ public class Dao_qanswer {
 	public void updateAnswers(QAnswer a) {
 		System.out.println("updateAnswer(QAnswer a)");
 		try {
-			String sql="update VASTAUKSET set KYSYMYS_ID=?, VASTAUS=?, KOMMENTTI where EHDOKAS_ID=?";
+			String sql="update answers set QUESTION_ID=?, ANSWER=?, COMMENTS where CANDIDATE_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, a.getCId());
 			pstmt.setInt(2, a.getAnswer());

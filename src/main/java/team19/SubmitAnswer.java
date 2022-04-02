@@ -1,4 +1,5 @@
 package team19;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import team19.data.QAnswer;
 
-
+/**
+ * Servlet implementation class SubmitAnswer
+ */
 @WebServlet("/SubmitAnswer")
 public class SubmitAnswer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,7 +39,7 @@ public class SubmitAnswer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
+//	check login	
 		boolean isCandidate = false;;
 		String id = null;
 		
@@ -52,7 +55,7 @@ public class SubmitAnswer extends HttpServlet {
 			}
 		}
 		
-
+//	get client selection
 		
 		ArrayList<QAnswer> selectionList= new ArrayList<QAnswer>(); // Empty ArrayList for the client's answers.
 		
@@ -75,14 +78,17 @@ public class SubmitAnswer extends HttpServlet {
 
 		request.setAttribute("selectionList", selectionList);		
 
+//		Integer.valueOf(id);
 
+//		IF U ARE LOGGED IN AS A CANDIDATE
 		if (isCandidate) {
-			RequestDispatcher rd = request.getRequestDispatcher("/team19/SaveAnswers");
+			RequestDispatcher rd = request.getRequestDispatcher("/SaveAnswers");
 			rd.forward(request, response);
 			
 		}
+//		IF U ARE LOGGED IN AS ARE A VOTER / REGULAR USER
 		else {
-			RequestDispatcher rd = request.getRequestDispatcher("/team19/FindMatchingCandidates");
+			RequestDispatcher rd = request.getRequestDispatcher("/FindMatchingCandidates");
 			rd.forward(request, response);
 			}
 	}
