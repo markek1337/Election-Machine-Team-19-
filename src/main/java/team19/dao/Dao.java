@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import team19.adminfeatures.Candidates;
 
-
 public class Dao {
 	private Connection conn;
 
@@ -96,7 +95,6 @@ public class Dao {
 	}
 	
 
-	
 	public int deleteCandidate (Candidates candidate) {
 		
 		int count = 0;
