@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import team19.adminfeatures.Candidates;
-import team19.data.Answers;
+
 
 public class Dao {
 	private Connection conn;
@@ -95,45 +95,12 @@ public class Dao {
 		return result;
 	}
 	
-	public int saveAnswers(Answers answers) {
-		Statement stmt = null;
-		int count= 0;
-		try {
-			stmt = conn.createStatement();
-			count = stmt.executeUpdate("insert into user_VASTAUKSET(id, KYSYMYS_ID, VASTAUS, KOMMENTTI) values('"+answers.getId()+"', "+answers.getQuestionID()+","+answers.getAnswer()+","+answers.getComments()+")");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return count;
-	}
-	
-	public ArrayList<Answers> readAllAnswers() {
-		ArrayList<Answers> list = new ArrayList<>();
-		Statement stmt = null;
-		int count = 0;
-		try {
-			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from user_VASTAUKSET");
-			while (rs.next()) {
-				Answers answers = new Answers();
-				answers.setId(rs.getInt("id"));
-				answers.setQuestionID(rs.getInt("KYSYMYS_ID"));
-				answers.setAnswer(rs.getInt("VASTAUS"));
-				answers.setComments(rs.getString("KOMMENTTI"));
-				list.add(answers);
-			
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+
 	
 	public int deleteCandidate (Candidates candidate) {
 		
 		int count = 0;
-		String sql = "delete from EHDOKKAAT where EHDOKAS_ID = ?";
+		String sql = "delete from CANDIDATES where CANDIDATE_ID = ?";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -156,20 +123,20 @@ public class Dao {
 		try {
 			
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from EHDOKKAAT");
+			ResultSet rs = stmt.executeQuery("select * from CANDIDATES");
 			
 			while (rs.next()) {
 				
 				Candidates candidate = new Candidates();
-				candidate.setId(rs.getInt("EHDOKAS_ID"));
-				candidate.setName(rs.getString("ETUNIMI"));
-				candidate.setSurname(rs.getString("SUKUNIMI"));
-				candidate.setParty(rs.getString("PUOLUE"));
-				candidate.setHomecity(rs.getString("KOTIPAIKKAKUNTA"));
-				candidate.setIka(rs.getInt("IKA"));
-				candidate.setDescription(rs.getString("MIKSI_EDUSKUNTAAN"));
-				candidate.setIdea(rs.getString("MITA_ASIOITA_HALUAT_EDISTAA"));
-				candidate.setOccupation(rs.getString("AMMATTI"));
+				candidate.setId(rs.getInt("CANDIDATE_ID"));
+				candidate.setName(rs.getString("SURNAME"));
+				candidate.setSurname(rs.getString("FIRSTNAME"));
+				candidate.setParty(rs.getString("PARTY"));
+				candidate.setHomecity(rs.getString("LOCATION"));
+				candidate.setIka(rs.getInt("AGE"));
+				candidate.setDescription(rs.getString("REASON_FOR_RUNNING"));
+				candidate.setIdea(rs.getString("AIMS_AND_GOALS"));
+				candidate.setOccupation(rs.getString("PROFESSION"));
 				list.add(candidate);
 			}
 		} catch (SQLException e) {
@@ -180,7 +147,7 @@ public class Dao {
 	
 	public Candidates getCandidateInfo(int id) {
 		Candidates result = null;
-		String sql = "select * from EHDOKKAAT where EHDOKAS_ID = ?";
+		String sql = "select * from CANDIDATES where CANDIDATE_ID = ?";
 		
 		try {
 			
@@ -192,15 +159,15 @@ public class Dao {
 			
 			if (resultset.next()) {
 				result = new Candidates();
-				result.setId(resultset.getInt("EHDOKAS_ID"));
-				result.setName(resultset.getString("ETUNIMI"));
-				result.setSurname(resultset.getString("SUKUNIMI"));
-				result.setParty(resultset.getString("PUOLUE"));
-				result.setHomecity(resultset.getString("KOTIPAIKKAKUNTA"));
-				result.setIka(resultset.getInt("IKA"));
-				result.setDescription(resultset.getString("MIKSI_EDUSKUNTAAN"));
-				result.setIdea(resultset.getString("MITA_ASIOITA_HALUAT_EDISTAA"));
-				result.setOccupation(resultset.getString("AMMATTI"));
+				result.setId(resultset.getInt("CANDIDATE_ID"));
+				result.setName(resultset.getString("SURNAME"));
+				result.setSurname(resultset.getString("FIRSTNAME"));
+				result.setParty(resultset.getString("PARTY"));
+				result.setHomecity(resultset.getString("LOCATION"));
+				result.setIka(resultset.getInt("AGE"));
+				result.setDescription(resultset.getString("REASON_FOR_RUNNING"));
+				result.setIdea(resultset.getString("AIMS_AND_GOALS"));
+				result.setOccupation(resultset.getString("PROFESSION"));
 			}
 			
 		} catch (SQLException e) {
@@ -212,7 +179,7 @@ public class Dao {
 	
 	public int updateCandidates(Candidates candidate) {
 		int count = 0;
-		String sql = "update EHDOKKAAT set ETUNIMI = ?, SUKUNIMI = ?, PUOLUE = ?, KOTIPAIKKAKUNTA = ?, IKA = ?, MIKSI_EDUSKUNTAAN = ?, MITA_ASIOITA_HALUAT_EDISTAA = ?, AMMATTI = ? where EHDOKAS_ID = ?";
+		String sql = "update CANDIDATES set SURNAME = ?, FIRSTNAME = ?, PARTY = ?, LOCATION = ?, AGE = ?, REASON_FOR_RUNNING = ?, AIMS_AND_GOALS = ?, PROFESSION = ? where CANDIDATE_ID = ?";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
