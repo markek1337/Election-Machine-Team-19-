@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import team19.adminfeatures.Candidates;
 import team19.data.Answers;
 
-
-
 public class Dao {
 	private Connection conn;
 
