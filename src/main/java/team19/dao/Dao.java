@@ -166,6 +166,12 @@ public class Dao {
 				candidate.setId(rs.getInt("EHDOKAS_ID"));
 				candidate.setName(rs.getString("ETUNIMI"));
 				candidate.setSurname(rs.getString("SUKUNIMI"));
+				candidate.setParty(rs.getString("PUOLUE"));
+				candidate.setHomecity(rs.getString("KOTIPAIKKAKUNTA"));
+				candidate.setIka(rs.getInt("IKA"));
+				candidate.setDescription(rs.getString("MIKSI_EDUSKUNTAAN"));
+				candidate.setIdea(rs.getString("MITA_ASIOITA_HALUAT_EDISTAA"));
+				candidate.setOccupation(rs.getString("AMMATTI"));
 				list.add(candidate);
 			}
 		} catch (SQLException e) {

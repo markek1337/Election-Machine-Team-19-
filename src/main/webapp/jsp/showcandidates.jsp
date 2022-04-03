@@ -31,6 +31,9 @@
 		<td>
 			<a href="/deletecandidates?id=${candidate.id }">Delete</a>
 		</td>
+		<td>
+			<a href="/candidatesinfo?id=${candidate.id }">See more</a>
+		</td>
 </c:forEach>
 </table>
 
