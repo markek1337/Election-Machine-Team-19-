@@ -29,7 +29,7 @@
 			<a href="/editcandidates?id=${candidate.id }">Edit</a>
 		</td>
 		<td>
-			<a href="/deletegame?id=${candidate.id }">Delete</a>
+			<a href="/deletecandidates?id=${candidate.id }">Delete</a>
 		</td>
 </c:forEach>
 </table>

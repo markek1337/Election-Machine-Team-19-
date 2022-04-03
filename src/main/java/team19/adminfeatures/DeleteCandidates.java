@@ -11,15 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import team19.dao.Dao;
-import team19.adminfeatures.Candidates;
 
-@WebServlet(name = "EditCandidates",
-			urlPatterns = {"/editcandidates"}
+@WebServlet(
+			name = "DeleteCandidates",
+			urlPatterns = "/deletecandidates"
 			)
 
-public class EditCandidates extends HttpServlet {
+public class DeleteCandidates extends HttpServlet {
 
-	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// if sessions does not exist, create new one
@@ -37,7 +36,7 @@ public class EditCandidates extends HttpServlet {
 						
 				session.setAttribute("candidate", candidate);
 						
-				RequestDispatcher rd = request.getRequestDispatcher("jsp/editcandidates.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("jsp/deletecandidates.jsp");
 				rd.forward(request, response);
 				
 			} catch (Exception e) {
@@ -48,19 +47,19 @@ public class EditCandidates extends HttpServlet {
 			response.sendRedirect("/showcandidates");
 		}
 	}
-	
-	@Override
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// Create connection
 		Dao dao=new Dao();
 		Candidates candidate = readCandidate(request);
 				
-		dao.updateCandidates(candidate);
+		dao.deleteCandidate(candidate);
 				
 		dao.close();
 		
 		response.sendRedirect("/showcandidates");
+		
 	}
 	
 	private Candidates readCandidate (HttpServletRequest request) {
