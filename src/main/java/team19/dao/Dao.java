@@ -1,19 +1,25 @@
 package team19.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Dao {
-	
 	private Connection conn;
-	
+
 	public Dao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn=java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+
+
+			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
@@ -25,6 +31,7 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
+
 	
 	public void addUser (String username, String password, String salt) {
 
