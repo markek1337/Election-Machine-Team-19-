@@ -12,7 +12,6 @@
 <title>Candidates</title>
 </head>
 <body>
-
 <table>
 <tr>
 	<th>ID</th>
@@ -36,6 +35,8 @@
 		</td>
 </c:forEach>
 </table>
+
+<a href='jsp/adminpage.jsp'>Back to admin page</a><br>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 	<p>Delete a record</p>
 	<form action='/deletecandidates' method='post'>
-		<input type="hidden" name="id" value="${sessionScope.game.id }">
+		<input type="hidden" name="id" value="${sessionScope.candidate.id }">
 		<input type='submit' name='ok' value='Delete'>
 	</form>
 
