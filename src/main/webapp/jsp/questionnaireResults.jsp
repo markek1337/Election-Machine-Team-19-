@@ -25,12 +25,12 @@
 	        </h5>
         
 
-<%--                 <h6>Your answers (click to view):</h6>
+                 <h6>Your answers (click to view):</h6>
           
 
                 <input class = "buttonShowHide2 button1" id = "btnUserResults" 
                 type="button" value="ANSWERS" onclick="ShowHideToggle4(this)" >                
---%>
+
 
             <br>
                 
