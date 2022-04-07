@@ -10,6 +10,7 @@
 	Welcome, ${username}
 	<h2>Admin menu</h2>
 	<a href='/showcandidates'>Show all candidates</a><br>
+	<a href='addcandidates.jsp'>Add candidate</a><br>
 	
 	<form action="/logout">
 		<input type="submit" value="logout">
