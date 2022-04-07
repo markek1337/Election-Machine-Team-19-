@@ -1,7 +1,7 @@
 package team19.dao;
 
 import java.sql.Connection;
-
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,10 +9,76 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import team19.adminfeatures.Candidates;
+import team19.data.Answer;
+import team19.data.Candidate;
+import team19.data.QAnswer;
+import team19.data.Question;
+
 
 public class Dao {
 	private Connection conn;
+	private String url;
+	private String user;
+	private String pass;
+	
+	public Dao(String url, String user, String pass) {
+		System.out.println("Dao(String url, String user, String pass) CONSTRUCTOR ******");
+		this.url=url;
+		this.user=user;
+		this.pass=pass;
+	}
+	// Getters
+	
+	public String getUrl() {
+		return url;
+	}
 
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public Connection getConn() {
+		return conn;
+	}
+
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
+
+	public boolean getConnection() {
+		System.out.println("getConnection()");
+		try {
+	        if (conn == null || conn.isClosed()) {
+	            try {
+	                Class.forName("com.mysql.jdbc.Driver").newInstance();
+	            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+	                throw new SQLException(e);
+	            }
+	            conn = DriverManager.getConnection(url, user, pass);
+	        }
+	        return true;
+		}
+		catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
 	public Dao() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -197,4 +263,143 @@ public class Dao {
 		}
 		return count;
 	}
+	public ArrayList<Answer> readAllAnswer() {
+
+		System.out.println("readAllAnswer() running");
+		ArrayList<Answer> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("SELECT * FROM answers;");
+			System.out.println("RS: " + RS);
+			while (RS.next()){
+				Answer a=new Answer();
+				a.setCANDIDATE_ID(RS.getInt("CANDIDATE_ID"));
+				a.setQUESTION_ID(RS.getInt("QUESTION_ID"));
+				a.setANSWER(RS.getInt("ANSWER"));
+				list.add(a);
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			System.out.println("Operation error readAllAnswer()--" + url + "\nUser: " + user + " / " + pass);
+			return null;
+		}
+	}
+	
+	
+	private ResultSet getString(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	
+
+	
+	public Answer readAnswer(String CANDIDATE_ID) {
+
+		Answer politician=null;
+		try {
+			String sql="SELECT * FROM answers WHERE CANDIDATE_ID=? ORDER BY QUESTION_ID;";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, CANDIDATE_ID);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				politician=new Answer();
+				politician.setQUESTION_ID(RS.getInt("QUESTION_ID"));
+				politician.setANSWER(RS.getInt("ANSWER"));
+			}
+			System.out.println("Your lies are ready for processing:)");
+			return politician;
+		}
+		catch(SQLException e) {
+			System.out.println("Operation error deleteAnswer()--" + url + "\nUser: " + user + " / " + pass);
+			return null;
+		}
+	}
+	public ArrayList<Candidate> readAllCandidate() { // Will read all cans in asc order
+		ArrayList<Candidate> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from candidates");
+			while (RS.next()){
+				Candidate c=new Candidate();
+				c.setId(RS.getInt("CANDIDATE_ID"));
+				c.setSName(RS.getString("SURNAME"));
+				c.setFName(RS.getString("FIRSTNAME"));
+				c.setParty(RS.getString("PARTY"));
+				c.setLocation(RS.getString("LOCATION"));
+				c.setAge(RS.getInt("AGE"));
+				c.setReason(RS.getString("REASON_FOR_RUNNING"));
+				c.setGoals(RS.getString("AIMS_AND_GOALS"));
+				c.setProfession(RS.getString("PROFESSION"));
+				list.add(c);
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}	
+	public ArrayList<QAnswer> readAllAnswers() {
+		System.out.println("readAllAnswer()");
+		ArrayList<QAnswer> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from answers");
+			System.out.println("RS: " + RS);
+			while (RS.next()){
+				QAnswer a=new QAnswer();
+				a.setCId(RS.getInt("CANDIDATE_ID"));
+				a.setQId(RS.getInt("QUESTION_ID"));
+				a.setAnswer(RS.getInt("ANSWER"));
+				list.add(a);
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	public ArrayList<Question> readAllQuestion() {
+		System.out.println("readAllQuestion()");
+		ArrayList<Question> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from questions");
+			System.out.println("RS: " + RS);
+			while (RS.next()){
+				Question q=new Question();
+				q.setId(RS.getInt("QUESTION_ID"));
+				q.setQuestion(RS.getString("QUESTION"));
+				list.add(q);
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+
+
+	public Question readQuestion(String id) {
+		Question f=null;
+		try {
+			String sql="select * from questions where id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				f=new Question();
+				f.setId(RS.getInt("QUESTION_ID"));
+				f.setQuestion(RS.getString("QUESTION"));
+			}
+			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+
 }
