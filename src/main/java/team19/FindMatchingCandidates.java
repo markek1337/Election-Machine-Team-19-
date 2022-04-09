@@ -192,7 +192,6 @@ public class FindMatchingCandidates extends HttpServlet {
             @Override public int compare(QAnswer o1, QAnswer o2) {
                 return o1.getTotalScore() - o2.getTotalScore(); }}); 
         
-//		<<< Debugging Messages >>> 		
 		for (int i = 0; i < cndScoreBoard.size(); i++) {
 			System.out.println("scoring results: " + "CID: " + cndScoreBoard.get(i).getCId() + 
 					", Total score: " + cndScoreBoard.get(i).getTotalScore());}
@@ -262,6 +261,3 @@ public class FindMatchingCandidates extends HttpServlet {
 		return profile;	
 	}
 }
-
-
-

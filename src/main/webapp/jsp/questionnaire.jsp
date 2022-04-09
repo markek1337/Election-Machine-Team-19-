@@ -15,28 +15,41 @@
     
 </head>
 <body>
+	<div class="container">
+	
    <%@ include file="../components/navbar.jsp" %> 
+   
+         <div class="container6"> 
  
             <h2>Election Machine</h2>
             <h5>This election machine contains 19 questions.
                 Answer them all to find out which candidate suits you best!</h5>
-        <hr> 
+         
+        </div>
+        <div class="container7a">             
         
             <h5>1 = strongly disagree / 2 = disagree / 3 = neither agree nor disagree / 4 = agree / 5 = strongly agree</h5>
-        <hr>     
-            <form id="form" action="/SubmitAnswer" method="POST">				
-               
-                <br>                 
+        </div>
+        
+        <div class="container2">                        
+            <form id="form" action="/SubmitAnswer" method="POST">				               
+                <br>
+                <div class="container5a">                                                  
 					<span id="spnError" class="error" style="display: none">Please select.</span>
                      
-
-                    <button class="button-main button1 questionnaireButton" onclick="onStart()" id="start"><b>Start</b></button>                    
+                   <div class="container3">  
+                    <button class="button-main button1 questionnaireButton" onclick="onStart()" id="start"><b>Start</b></button>
+                    </div>
+                    
+                    <div class="input-radio">
 	                    
                         <c:forEach var="question" items="${requestScope.questionlist}" >
 							
 						<div style="display: none" id="q${question.id}">
 						
+							<div class = "containerDynamicQuestion">
 					        	<h3><c:out value = "${question.id}/${fn:length(requestScope.questionlist)} - ${question.question}"/></h3> <!-- Display question -->
+					   		</div>
 					   		
                                     
                                     <input hidden ="question_text" type = "text" name = "question_text${question.id}"  value="${question.question}">
@@ -51,7 +64,7 @@
                                     <input type = "radio" name = "selected${question.id}" value = "2" required>
                                     </label>
                                     <label> <b>(3)</b>
-                                    <input type = "radio" name = "selected${question.id}" value = "3" required> 
+                                    <input type = "radio" name = "selected${question.id}" value = "3" required> <!-- checked ="checked" - FOR Testing purposes -->
                                     </label>
                                     <label> <b>(4)</b>
                                     <input type = "radio" name = "selected${question.id}" value = "4" required>
@@ -59,14 +72,19 @@
                                     <label> <b>(5)</b>
                                     <input type = "radio" name = "selected${question.id}" value = "5" required>
                                     </label>                                                                                         
-	        		   </div> 
-	        		    </c:forEach>       		        		    
-	       
+							</div>						
+	        		    
+	        		    </c:forEach>     		        		    
+	        		    
+                    </div>                   	      
 				
+                </div> 
+                    	<div class="container3a">						
 						<button class="button-main button1 questionnaireButton" onclick="onPrev()" id="previous" style="display: none"><b>Previous</b></button>
 						<button class="button-main button1 questionnaireButton" onclick="onNext()" id="next" style="display: none"><b>Next</b></button>
 						<button class="button-main button1 questionnaireButton" onclick="toMain()" id="cancel" style="display: none"><b>Cancel</b></button>
 						<button class="buttonSubmit button1" type="submit" id="submission" style="display: none"><b>Submit</b></button>                
+						</div> 	
 				
 				<br>  
 				
@@ -74,8 +92,9 @@
 		    
             <hr>      
                     
-        							
-    
+        </div>
+
+    </div>
 	<%@ include file="../components/footer.jsp" %>
 
 	<script type="text/javascript">
