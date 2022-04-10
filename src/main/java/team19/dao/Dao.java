@@ -95,25 +95,6 @@ public class Dao {
 			e.printStackTrace();
 		}
 	}
-
-	
-	public void addUser (String username, String password, String salt) {
-
-		String sql = "insert into useraccount (username, hashedpassword, salt) values (?, ?, ?)";
-		
-		try {
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, username);
-			stmt.setString(2, password);
-			stmt.setString(3, salt);
-			
-			stmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public void addCandidate (String surname, String firstname, String party, String location, int age, String reason, String goals, String profession) {
 		
