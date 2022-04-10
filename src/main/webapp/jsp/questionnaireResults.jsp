@@ -10,7 +10,7 @@
   <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
      
     <title>Questionnaire Results</title>
-    <%@ include file="../components/header.jsp" %> 
+    <%@ include file="header.jsp" %>
    
 </head>
 <body>
@@ -22,6 +22,11 @@
         <h2>Your Results</h2>
        	</div>
        	<div class="container5">
+<%--    <%@ include file="../components/navbar.jsp" %>  --%>
+
+        
+        <br><br><br><h2>Your Results</h2>
+       
 	        <h5>Thank you for successfully completing our questionnaire!
 	            <br><br>
 	            Now you can see best candidates for you.
@@ -81,7 +86,7 @@
                         <c:out value="${requestScope.profile_1st.FName} ${requestScope.profile_1st.SName} - ${requestScope.profile_1st.party}"></c:out>                  
                             <br>
                             <br>
-                            <hr>
+                            <br>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_1st.age}"></c:out>
@@ -96,7 +101,7 @@
                            	Reason: <c:out value="${requestScope.profile_1st.reason}"></c:out>
                            	<br>
                            	<br>
-                           	<hr>
+                           	<br>
                         </h5>                   
                         <div class="containerCompareResults"> 
                             <input class = "buttonShowHide3 button1" id = "btnCompareResults" 
@@ -139,7 +144,7 @@
                         <c:out value="${requestScope.profile_2nd.FName} ${requestScope.profile_2nd.SName} - ${requestScope.profile_2nd.party}"></c:out>                  
                             <br>
                             <br>
-                            <hr>
+                            <br>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_2nd.age}"></c:out>
@@ -154,7 +159,7 @@
                            	Reason: <c:out value="${requestScope.profile_2nd.reason}"></c:out>
                            	<br>
                            	<br>
-                           	<hr>
+                           	<br>
                         </h5>              
                         <div class="containerCompareResults"> 
                             <input class = "buttonShowHide3 button1" id = "btnCompareResults2" 
@@ -197,7 +202,7 @@
                         <c:out value="${requestScope.profile_3rd.FName} ${requestScope.profile_3rd.SName} - ${requestScope.profile_3rd.party}"></c:out>                  
                             <br>
                             <br>
-                            <hr>
+                            <br>
                             <br>
                             
 							Age: <c:out value="${requestScope.profile_3rd.age}"></c:out>
@@ -212,7 +217,7 @@
                            	Reason: <c:out value="${requestScope.profile_3rd.reason}"></c:out>
                            	<br>
                            	<br>
-                           	<hr>
+                           	<br>
                         </h5>                                     
        
                         <div class="containerCompareResults"> 
@@ -259,6 +264,11 @@
                <button class="button-main button1"><a href="../index.html"><b>Home</b></a></button>
 
         	</div>
+                <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>
+                
+
+
+        
 
     
                 <script type="text/javascript">
@@ -342,6 +352,6 @@
                         }
                     }                              
                 </script>
-	<%@ include file="../components/footer.jsp" %>
+<%-- 	<%@ include file="../components/footer.jsp" %> --%>
 </body>
 </html>

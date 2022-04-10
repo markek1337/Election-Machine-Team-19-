@@ -115,6 +115,30 @@ public class Dao {
 		}
 	}
 	
+	public void addCandidate (String surname, String firstname, String party, String location, int age, String reason, String goals, String profession) {
+		
+		String sql = "insert into candidates (SURNAME, FIRSTNAME, PARTY, LOCATION, AGE, REASON_FOR_RUNNING, AIMS_AND_GOALS, PROFESSION) values (?, ?, ?, ?, ?, ?, ?, ?)";
+	
+		try {
+			
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, surname);
+			stmt.setString(2, firstname);
+			stmt.setString(3, party);
+			stmt.setString(4, location);
+			stmt.setInt(5, age);
+			stmt.setString(6, reason);
+			stmt.setString(7, goals);
+			stmt.setString(8, profession);
+			
+			stmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public String getUserSalt (String username) {
 		
 		String result = "";

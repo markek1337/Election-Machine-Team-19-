@@ -1,4 +1,4 @@
-package team19.adminfeatures;
+package team19.candidatesinfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import javax.servlet.http.HttpSession;
 import team19.dao.Dao;
 import team19.adminfeatures.Candidates;
 
-@WebServlet(name = "ShowCandidates",
-			urlPatterns = {"/showcandidates"}
+@WebServlet(name = "ShowCandidatesForUser",
+			urlPatterns = {"/showcandidatesforuser"}
 			)
 
-public class ShowCandidates extends HttpServlet {
+public class ShowCandidatesForUser extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class ShowCandidates extends HttpServlet {
 				
 		session.setAttribute("allcandidates", candidates);
 				
-		RequestDispatcher rd = request.getRequestDispatcher("jsp/showcandidates.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("jsp/showcandidatesforuser.jsp");
 		rd.forward(request, response);
 		
 		

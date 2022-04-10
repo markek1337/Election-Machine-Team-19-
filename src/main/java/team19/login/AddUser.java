@@ -21,7 +21,7 @@ public class AddUser extends HttpServlet {
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-		response.sendRedirect("index.html");
+		response.sendRedirect("index.jsp");
 		
 	}
 	
@@ -45,7 +45,7 @@ public class AddUser extends HttpServlet {
 		dao.addUser(username, hashpass, salt);
 		dao.close();
 		
-		response.sendRedirect("index.html");
+		response.sendRedirect("index.jsp");
 		
 	}
 }

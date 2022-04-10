@@ -1,17 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="team19.adminfeatures.Candidates" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Edit Candidates</title>
+<%@ include file="header.jsp" %>
 </head>
 <body>
 
-	<form action='/editcandidates' method='post'>
+	<br><br><br><form action='/editcandidates' method='post'>
 		Name: <input type='text' name='name' value='${sessionScope.candidate.name }'><br>
 		Surname: <input type='text' name='surname' value='${sessionScope.candidate.surname }'><br>
 		Party: <input type='text' name='party' value='${sessionScope.candidate.party }'><br>
