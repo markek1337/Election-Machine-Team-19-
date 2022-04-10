@@ -8,15 +8,10 @@
 </head>
 <body>
 
-	<form action="/loginuser">
-    	Username: <input type="text" name="username"><br>
-    	Password: <input type="password" name="password"><br>
-    	<label for="lang">Language</label>
-      		<select name="roles" id="lang">
-		        <option value="admin">Admin</option>
-		        <option value="candidate">Candidate</option>
-      		</select><br>
-    	<input type="submit" name="send" value="Log In">
+    <form action="/loginuser">
+        Username: <input type="text" name="username"><br>
+        Password: <input type="password" name="password"><br>
+        <input type="submit" name="send" value="Log In">
     </form>
 
 </body>

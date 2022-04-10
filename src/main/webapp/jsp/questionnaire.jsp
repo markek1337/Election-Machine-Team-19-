@@ -9,15 +9,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%@ include file="../components/meta.jsp" %>    
+<%--     <%@ include file="../components/meta.jsp" %>     --%>
     <title>Questionnaire</title>
-   <%@ include file="../components/header.jsp" %>     
+   <%@ include file="header.jsp" %>
     
 </head>
 <body>
-   <%@ include file="../components/navbar.jsp" %> 
+<%--    <%@ include file="../components/navbar.jsp" %>  --%>
  
-            <h2>Election Machine</h2>
+           <h2>Election Machine</h2>
             <h5>This election machine contains 19 questions.
                 Answer them all to find out which candidate suits you best!</h5>
         <hr> 
@@ -76,7 +76,7 @@
                     
         							
     
-	<%@ include file="../components/footer.jsp" %>
+<%-- 	<%@ include file="../components/footer.jsp" %> --%>
 
 	<script type="text/javascript">
 	
