@@ -11,11 +11,11 @@
      
     <title>Questionnaire Results</title>
     <%@ include file="header.jsp" %>
+    <link href="../css/style.css" rel="stylesheet">
    
 </head>
 <body>
 	<div class="container">
-	   <%@ include file="../components/navbar.jsp" %> 
 	
         <div class="container6"> 
         

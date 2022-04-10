@@ -8,11 +8,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Delete Candidate</title>
-<%@ include file="header.jsp" %>
 </head>
 <body>
 
-	<br><br><br><p>Delete a record</p>
+	<p>Delete a record</p>
 	<form action='/deletecandidates' method='post'>
 		<input type="hidden" name="id" value="${sessionScope.candidate.id }">
 		<input type='submit' name='ok' value='Delete'>

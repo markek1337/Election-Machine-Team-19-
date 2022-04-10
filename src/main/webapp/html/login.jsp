@@ -4,23 +4,23 @@
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=ISO-8859-1" />
     <title>Login</title>
 	<%@ include file="/jsp/header.jsp" %>
+	<link href="../css/style.css" rel="stylesheet">
   </head>
 
-  <body>
-    <h1>Authorization</h1>
-	<h2>Log In</h2>
-  <form action="/loginuser" method="get">
-    	Username: <input type="text" name="username"><br>
-    	Password: <input type="password" name="password"><br>
-    	<input type="submit" name="send" value="Log In">
+  <body class="loginpage">
+  	<div class="loginform">
+	<h1>Log In</h1>
+  	<form action="/loginuser" method="get">
+  		<div class="usr">
+	    	<input type="text" name="username" placeholder="Username"><br>
+    	</div>
+    	<div class="pass">
+	    	<input type="password" name="password" placeholder="Password"><br>
+    	</div>
+    	<div class="sendButton">
+    		<input type="submit" name="send" value="Log In">
+    	</div>
     </form>
-    <!-- <br>
-    <h2>Register</h2>
-    <form action="/adduser" method="post">
-    	Username: <input type="text" name="user"><br>
-    	Password: <input type="password" name="pass"><br>
-    	
-    	<input type="submit" value="Register">
-    </form> -->
+    </div>
   </body>
 </html>
