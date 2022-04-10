@@ -41,8 +41,8 @@ public class LoginUser extends HttpServlet {
 			session.setAttribute("username", username);
 			response.sendRedirect("jsp/adminpage.jsp");
 			
-		} else if (SecurityUtils.isPasswordCorrect(hashpassword, password, salt)) {
-			response.getWriter().println("Login failed");
+		} else {
+			response.getWriter().println("Login failed, try again!");
 		}
 	}
 	
