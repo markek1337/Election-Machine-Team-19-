@@ -17,7 +17,11 @@ import team19.dao.Dao;
 import team19.data.Candidate;
 import team19.data.QAnswer;
 
-
+/**
+ * Servlet implementation class FindMatchingCandidates for create score system to sort by user and candidate answers
+ * @author Edgar
+ * @version 1.0
+ */
 @WebServlet("/FindMatchingCandidates")
 public class FindMatchingCandidates extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,24 +38,34 @@ public class FindMatchingCandidates extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * method for making score system 
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-//	get answer from voters
+
+		/**
+		 *  Get answer from voters
+		 */
 		@SuppressWarnings("unchecked")
 		ArrayList<QAnswer> selectionList = (ArrayList<QAnswer>) request.getAttribute("selectionList");
 		
 		
-
-//	get candidate section answers
+		/**
+		 *  Get candidate section answers
+		 */
 		ArrayList<QAnswer> answerList = returnCndAnswersStacked();
 
-		
-//	get candidates profiles	
+		/**
+		 *  Get candidates profiles	
+		 */
 		ArrayList<Candidate> candidateProfileStacked = returnCndProfileStacked();
 		
-
-//	questionnaire results prepare
+		/**
+		 *  Questionnaire results prepare
+		 */
 		ArrayList<QAnswer> answerListScored = scoreStackedData(answerList, selectionList); //Will produce a "stacked" ArrayList containing all the QA objects with individual score values.
 		ArrayList<QAnswer> scoreBoard = findBestCnds(answerListScored);
 		
@@ -63,13 +77,16 @@ public class FindMatchingCandidates extends HttpServlet {
 		ArrayList<QAnswer> result_2nd = sliceFromStacked(cndIdSecond, answerListScored);
 		ArrayList<QAnswer> result_3rd = sliceFromStacked(cndIdThird, answerListScored);
 		
-//	prepare profiles of candidates
+		/**
+		 *  Prepare profiles of candidates
+		 */
 		Candidate profile_1st = returnCndProfile(cndIdPole, candidateProfileStacked);
 		Candidate profile_2nd = returnCndProfile(cndIdSecond, candidateProfileStacked);
 		Candidate profile_3rd = returnCndProfile(cndIdThird, candidateProfileStacked);
 		
-		
-//	send data to jsp file
+		/**
+		 *  Send data to jsp file
+		 */
 		request.setAttribute("selectionList", selectionList);
 		
 		request.setAttribute("result_1st", result_1st);
@@ -84,8 +101,13 @@ public class FindMatchingCandidates extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
-	
-//	custom method
+	/**
+	 *  Custom method
+	 */
+	/**
+	 * Get candidate section answers
+	 * @return
+	 */
 	public ArrayList<QAnswer> returnCndAnswersStacked()
 	{
 		ArrayList<QAnswer> answerList=null;
@@ -103,6 +125,10 @@ public class FindMatchingCandidates extends HttpServlet {
 		return answerList;
 	}
 	
+	/**
+	 * Get candidates profiles	
+	 * @return
+	 */
 	public ArrayList<Candidate> returnCndProfileStacked()
 	{
 		ArrayList<Candidate> candidateProfileStacked=null;
@@ -120,7 +146,13 @@ public class FindMatchingCandidates extends HttpServlet {
 		}
 		return candidateProfileStacked;
 	}
-	
+
+	/**
+	 * Iteration. Questionnaire results prepare
+	 * @param answerList
+	 * @param selectionList
+	 * @return
+	 */
 	public ArrayList<QAnswer> scoreStackedData(ArrayList<QAnswer> answerList, ArrayList<QAnswer> selectionList)
 	{
 		ArrayList<QAnswer> answerListScored= new ArrayList<QAnswer>(); // Will be returned at the end.
@@ -129,7 +161,7 @@ public class FindMatchingCandidates extends HttpServlet {
 		
 		int cumulativeScore = 0;
 		while (iteratorCnd.hasNext()) {
-//	Iteration
+
 			QAnswer cnd = new QAnswer();
 			cnd = iteratorCnd.next(); // Will select the next object in the ArrayList and assign it to QAnswer object.
 			
@@ -146,7 +178,10 @@ public class FindMatchingCandidates extends HttpServlet {
 			}
 			
 			if(cnd.getQId() == clnt.getQId()) { // Checks if question IDs are matching or not (Data integrity error!) 	
-//	Scoring
+				
+				/**
+				 *  Scoring
+				 */
 				int score = Math.abs(cnd.getAnswer() - clnt.getAnswer());
 				cnd.setScore(score); // Will store the absolut value of the diff between 2 answer values. => SCORE
 				
@@ -154,11 +189,15 @@ public class FindMatchingCandidates extends HttpServlet {
 				if(clnt.getQId() == selectionList.size()) {cnd.setTotalScore(cumulativeScore);} // Cumulative score is the total score (ONLY!) for last QA object.
 				else {cnd.setTotalScore(-1);}
 				
-//	Adding question text
+				/**
+				 *  Adding question text
+				 */
 				cnd.setQTxt(clnt.getQTxt());
 				
-//	Popular array list
-				answerListScored.add(cnd); // Adding QA object to ArrayList.
+				/**
+				 *  Adding QA object to ArrayList.
+				 */
+				answerListScored.add(cnd); 
 			}
 			else {
 				System.out.println("Data integrity error at scoreStacked()! Question IDs are not matching.");
@@ -168,14 +207,22 @@ public class FindMatchingCandidates extends HttpServlet {
 		return answerListScored;		
 	}
 	
+	/**
+	 * Will iterate through the ArrayList
+	 * @param scoredStackedData
+	 * @return
+	 */
 	public ArrayList<QAnswer> findBestCnds(ArrayList<QAnswer> scoredStackedData)
 	{	
 		ArrayList<QAnswer> cndScoreBoard = new ArrayList<QAnswer>();// Will be returned at the end.
 		ArrayList<QAnswer> scoredStack = scoredStackedData; 
 		ListIterator<QAnswer> iterator = scoredStack.listIterator(); // Will iterate through the ArrayList.
 		
-//	Drops false data			
-		while(iterator.hasNext()) // Will remove "junk" (false) total score data (-1).
+
+		/**
+		 *  Drops false data
+		 */
+		while(iterator.hasNext()) 
 		{
 			QAnswer object = new QAnswer();
 			object = iterator.next();
@@ -187,7 +234,9 @@ public class FindMatchingCandidates extends HttpServlet {
 			}
 		}
 
-//	Sorting based on total score collected
+		/**
+		 *  Sorting based on total score collected
+		 */
         Collections.sort(cndScoreBoard, new Comparator<QAnswer>() { // Will organise elements into ascending order.
             @Override public int compare(QAnswer o1, QAnswer o2) {
                 return o1.getTotalScore() - o2.getTotalScore(); }}); 
@@ -198,8 +247,13 @@ public class FindMatchingCandidates extends HttpServlet {
 	
 		return cndScoreBoard;
 	}
-	
-	
+
+	/**
+	 * Get candidate ID from score board
+	 * @param rankAchieved
+	 * @param scoreBoard
+	 * @return
+	 */
 	public int getCndIdFromScoreBoard(int rankAchieved, ArrayList<QAnswer> scoreBoard)
 	{
 		ArrayList<QAnswer> scBoard = scoreBoard;
@@ -212,7 +266,13 @@ public class FindMatchingCandidates extends HttpServlet {
 		return candidateId;	
 	}
 	
-	
+
+	/**
+	 * Add next object
+	 * @param candidateId
+	 * @param scoredStackedData
+	 * @return
+	 */
 	public ArrayList<QAnswer> sliceFromStacked(int candidateId, ArrayList<QAnswer> scoredStackedData)
 	{
 		int cndId = candidateId;
@@ -228,8 +288,10 @@ public class FindMatchingCandidates extends HttpServlet {
 				result.add(object);
 			}
 		}
-		
-//		<<< Debugging Messages >>> 		
+
+		/**
+		 *  Debugging message
+		 */
 		for (int i = 0; i < result.size(); i++) {
 			System.out.println("Cnd data sliced: " + "CID: " + result.get(i).getCId() + 
 					", QID: " + result.get(i).getQId() + ", Score: " + result.get(i).getScore() + 
@@ -238,7 +300,12 @@ public class FindMatchingCandidates extends HttpServlet {
 		return result;
 	}
 	
-	
+	/**
+	 * Return candidate profile
+	 * @param candidateId
+	 * @param candidateProfileStacked
+	 * @return
+	 */
 	public Candidate returnCndProfile(int candidateId, ArrayList<Candidate> candidateProfileStacked)
 	{
 		int cndId = candidateId;
