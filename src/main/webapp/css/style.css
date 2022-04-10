@@ -1,0 +1,214 @@
+.button-main {
+    background: linear-gradient(180deg, #E76F51, 95%, #F4A261);
+    border: none;
+    color: rgba(255, 255, 255, 0.829); 
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;                      
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    margin: 20px 10px 0px 10px; 
+    width: 90px;            
+}
+.buttonShowHide {
+    background-color: #0075ac;
+    border: none;
+    color: rgba(255, 255, 255, 0.829); 
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;                      
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    margin: 20px 10px 0px 10px; 
+    width: 90px;    
+    font-weight: bold;     
+}
+.buttonShowHide2 {
+    background-color: #0075ac;
+    border: none;
+    color: rgba(255, 255, 255, 0.829); 
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;                      
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    margin: 20px 10px 0px 10px; 
+    width: 90px;    
+    font-weight: bold;     
+}
+.buttonShowHide3 {
+    background: linear-gradient(0deg, rgb(91, 59, 180), 90%, rgb(168, 168, 241));
+    border: none;
+    color: rgba(255, 255, 255, 0.829);    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;                      
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;    
+    width: 205px;    
+    font-weight: bold;    
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-left: 07px;   
+}
+.buttonSubmit {
+	background: linear-gradient(180deg, #0075ac, 95%, blue);
+    background-color: #0075ac;
+    border: none;
+    color: rgba(255, 255, 255, 0.829); 
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;                      
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10px;
+    margin: 20px 10px 0px 10px; 
+    width: 90px;    
+    font-weight: bold;
+    /*
+     background-color: #0075ac;
+    */   
+}
+.input-radio {
+    display: inline-block;           
+    text-align: center;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.829);  
+    margin: 10px auto;
+    padding: 0.1px 20px 0.1px 10px; 
+}
+.containerDynamicQuestion {
+    background: linear-gradient(0deg, #0075ac, 90%, #264653);  
+    border-radius: 10px;    
+    color: #c4ffff;    
+    margin: 5px 20px 5px 5px;
+    padding: 0.1px 10px 0.1px 10px;  
+}
+.containerCompareAnswers {        
+        background: linear-gradient(0deg, rgb(91, 59, 180), 90%, rgb(168, 168, 241));
+        color: rgba(255, 255, 255, 0.829);
+        border-radius: 10px; 
+        padding: 0.1px 10px 0.1px 10px;   
+        margin: 10px auto;        
+}
+.customText1 {
+	color: #E9C46A;
+}
+.questionnaireSelect {
+    color: rgba(255, 255, 255, 0.856);;
+}
+
+.container {
+    max-width: 80% !important;
+    background: linear-gradient(180deg, #E76F51, 20%, #F4A261);
+}
+.container2 {
+    text-align: left;
+    margin: 10px auto 10px auto;            
+}   
+.container3 {
+    text-align: center;                              
+}
+.container5 {
+    background: linear-gradient(180deg, #E76F51, 20%, #F4A261);
+    border-radius: 10px; 
+    padding: 0.1px 10px 0.1px 10px;             
+	color:black;
+    font-size: 1.5em;            
+}
+.container6 {
+    background: linear-gradient(180deg, #E76F51, 20%, #F4A261);
+    border-radius: 10px; 
+    padding: 0.1px 10px 0.1px 10px;  
+    margin: 10px auto;                                   
+}
+.container7a {          
+    padding: 0.1px;              
+	color:black;
+    text-align: center; 
+    width: 100%;               
+}
+
+
+.container7b {          
+    padding: 0.1px 10px 0.1px 10px;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 2px;              
+    color:black;    
+    height: 60px; 
+}
+
+
+.container7c {          
+    padding: 0.1px 10px 0.1px 10px;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 2px;              
+    color:black;    
+    height: 60px;  
+}
+
+ .containerUserAnswers {        
+        background: linear-gradient(45deg, #264653, 50%, #2A9D8F, #F4A261);
+        color: rgba(255, 255, 255, 0.829);
+        border-radius: 10px; 
+        padding: 0.1px 10px 0.1px 10px;   
+        margin: 10px auto;     
+    }
+.container-nav1 {
+    border-radius: 10px; 
+    padding: 1px;         
+    margin: 1px auto;
+    display: flex;
+    justify-content: center;             
+    width: 90%;
+    height: 40px;                       
+}
+
+.container-nav3 {
+    border-radius: 10px; 
+    padding: 1px;         
+    margin: 1px;           
+    width: 100%;
+    display: flex;
+    justify-content: center;                    
+}
+
+.container-nav4 {
+    border-radius: 10px; 
+    padding: 1px;         
+    margin: 1px;            
+    width: 100%; 
+    display: flex;
+    justify-content: center;                               
+}
+.container-nav-links {
+    background: linear-gradient(0deg,#F4A261, 10%, #E9C46A);
+    border-radius: 10px; 
+    padding: 1px;         
+    margin: 4px;              
+    width: 80%;             
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    justify-content: center;
+    display: flex;
+    align-items: center; 
+    box-shadow: 0 2px 16px 2px #264653;                                      
+}

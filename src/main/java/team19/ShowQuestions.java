@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import team19.dao.Dao_question;
+import team19.dao.Dao;
 import team19.data.Candidate;
 import team19.data.Question;
 
@@ -21,11 +21,11 @@ import team19.data.Question;
 @WebServlet("/ShowQuestions")
 public class ShowQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Dao_question dao=null;
+	private Dao dao=null;
 	
 	@Override
 	public void init() {
-		dao=new Dao_question("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		System.out.println("");
 	}
 	

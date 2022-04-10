@@ -2,6 +2,7 @@
 <head>
 
     <%@ include file="../components/meta.jsp" %>
+    
     <%@ page import="java.util.ArrayList" %>   
 	<%@ page import="team19.data.Question" %>   
 	<%@ page import="team19.data.Answer" %>
@@ -13,6 +14,14 @@
    
 </head>
 <body>
+	<div class="container">
+	   <%@ include file="../components/navbar.jsp" %> 
+	
+        <div class="container6"> 
+        
+        <h2>Your Results</h2>
+       	</div>
+       	<div class="container5">
 <%--    <%@ include file="../components/navbar.jsp" %>  --%>
 
         
@@ -23,16 +32,20 @@
 	            Now you can see best candidates for you.
 	            <br>           
 	        </h5>
-        
+       	</div>
 
-<%--                 <h6>Your answers (click to view):</h6>
-          
+            <div class="container7b">
+                <h6 class = "textRestyle1">Your answers (click to view):</h6>
+            </div>  
+
+            <div class="container3">
 
                 <input class = "buttonShowHide2 button1" id = "btnUserResults" 
                 type="button" value="ANSWERS" onclick="ShowHideToggle4(this)" >                
---%>
 
+            </div>
             <br>
+                
                 
             <div id="dvUserResults" style="display: none">
 				
@@ -247,7 +260,10 @@
 
 
 
+                <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>                
+               <button class="button-main button1"><a href="../index.html"><b>Home</b></a></button>
 
+        	</div>
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>
                 
 
@@ -261,44 +277,34 @@
                         if (btnCandResults1.value == "1st Place") {
                             dvCandResults1.style.display = "block";
                             btnCandResults1.value = "HIDE";
-                            btnCandResults1.style.backgroundColor = "#bfff00";
                             
                         } else {
                             dvCandResults1.style.display = "none";
                             btnCandResults1.value = "1st Place";
-                            btnCandResults1.style.backgroundColor = "#ffbf00";                           
                         }
                     }
            
-		            /* AD - This is the function for the ShowHideToggle 
-		                for the 2nd Place Suitable Candidate */		          
                     function ShowHideToggle2(btnCandResults2) {
                         var dvCandResults2 = document.getElementById("dvCandResults2");
                         if (btnCandResults2.value == "2nd Place") {
                             dvCandResults2.style.display = "block";
                             btnCandResults2.value = "HIDE";
-                            btnCandResults2.style.backgroundColor = "#bfff00";
                         } else {
                             dvCandResults2.style.display = "none";
                             btnCandResults2.value = "2nd Place";
-                            btnCandResults2.style.backgroundColor = "#ffbf00";    
                         }
                     }
     
 
 
-		            /* AD - This is the function for the ShowHideToggle 
-		                for the 3rd Place Suitable Candidate */          
                     function ShowHideToggle3(btnCandResults3) {
                         var dvCandResults3 = document.getElementById("dvCandResults3");
                         if (btnCandResults3.value == "3rd Place") {
                             dvCandResults3.style.display = "block";
                             btnCandResults3.value = "HIDE";
-                            btnCandResults3.style.backgroundColor = "#bfff00";
                         } else {
                             dvCandResults3.style.display = "none";
                             btnCandResults3.value = "3rd Place";
-                            btnCandResults3.style.backgroundColor = "#ffbf00";    
                         }
                     }
        
@@ -307,11 +313,9 @@
                         if (btnUserResults.value == "ANSWERS") {
                             dvUserResults.style.display = "block";
                             btnUserResults.value = "HIDE";
-                            btnUserResults.style.backgroundColor = "#bfff00";
                         } else {
                             dvUserResults.style.display = "none";
                             btnUserResults.value = "ANSWERS";
-                            btnUserResults.style.backgroundColor = "#ffbf00";    
                         }
                     }
       
@@ -320,11 +324,9 @@
                         if (btnCompareResults.value == "COMPARE YOUR ANSWERS") {
                             dvCompareResults.style.display = "block";
                             btnCompareResults.value = "HIDE";
-                            btnCompareResults.style.backgroundColor = "#bfff00";                          
                         } else {
                             dvCompareResults.style.display = "none";
                             btnCompareResults.value = "COMPARE YOUR ANSWERS";
-                            btnCompareResults.style.backgroundColor = "ffbf00";                         
                         }
                     }
 
@@ -333,11 +335,9 @@
                         if (btnCompareResults2.value == "COMPARE YOUR ANSWERS") {
                         	dvCompareResults2.style.display = "block";
                             btnCompareResults2.value = "HIDE";
-                            btnCompareResults2.style.backgroundColor = "#bfff00";
                         } else {
                         	dvCompareResults2.style.display = "none";
                             btnCompareResults2.value = "COMPARE YOUR ANSWERS";
-                            btnCompareResults2.style.backgroundColor = "ffbf00";    
                         }
                     }
                                    
@@ -346,11 +346,9 @@
                         if (btnCompareResults3.value == "COMPARE YOUR ANSWERS") {
                         	dvCompareResults3.style.display = "block";
                         	btnCompareResults3.value = "HIDE";
-                        	btnCompareResults3.style.backgroundColor = "#bfff00";
                         } else {
                         	dvCompareResults3.style.display = "none";
                         	btnCompareResults3.value = "COMPARE YOUR ANSWERS";
-                        	btnCompareResults3.style.backgroundColor = "ffbf00";    
                         }
                     }                              
                 </script>

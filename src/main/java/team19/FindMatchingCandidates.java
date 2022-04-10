@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import team19.dao.Dao_candidate;
-import team19.dao.Dao_qanswer;
+import team19.dao.Dao;
 import team19.data.Candidate;
 import team19.data.QAnswer;
 
@@ -22,14 +21,11 @@ import team19.data.QAnswer;
 @WebServlet("/FindMatchingCandidates")
 public class FindMatchingCandidates extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Dao_candidate dao_candidate=null;
-	private Dao_qanswer dao_qanswer=null;
+	private Dao dao=null;
       
 	@Override
 	public void init() {
-		dao_qanswer=new Dao_qanswer("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
-		System.out.println("");
-		dao_candidate=new Dao_candidate("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "team19", "kukkuu");
 		System.out.println("");
 	}
 	
@@ -93,10 +89,10 @@ public class FindMatchingCandidates extends HttpServlet {
 	public ArrayList<QAnswer> returnCndAnswersStacked()
 	{
 		ArrayList<QAnswer> answerList=null;
-		if(dao_qanswer.getConnection())
+		if(dao.getConnection())
 		{
 			System.out.println("Successfully connected to the database");
-			answerList=dao_qanswer.readAllAnswer();
+			answerList=dao.readAllAnswers();
 			System.out.println("Answer_List: " + answerList);
 	
 		}
@@ -110,10 +106,10 @@ public class FindMatchingCandidates extends HttpServlet {
 	public ArrayList<Candidate> returnCndProfileStacked()
 	{
 		ArrayList<Candidate> candidateProfileStacked=null;
-		if(dao_candidate.getConnection())
+		if(dao.getConnection())
 		{
 			System.out.println("Successfully connected to the database");
-			candidateProfileStacked=dao_candidate.readAllCandidate();
+			candidateProfileStacked=dao.readAllCandidate();
 			System.out.println("Can_List: " + candidateProfileStacked);
 			
 
@@ -196,7 +192,6 @@ public class FindMatchingCandidates extends HttpServlet {
             @Override public int compare(QAnswer o1, QAnswer o2) {
                 return o1.getTotalScore() - o2.getTotalScore(); }}); 
         
-//		<<< Debugging Messages >>> 		
 		for (int i = 0; i < cndScoreBoard.size(); i++) {
 			System.out.println("scoring results: " + "CID: " + cndScoreBoard.get(i).getCId() + 
 					", Total score: " + cndScoreBoard.get(i).getTotalScore());}
@@ -266,6 +261,3 @@ public class FindMatchingCandidates extends HttpServlet {
 		return profile;	
 	}
 }
-
-
-
