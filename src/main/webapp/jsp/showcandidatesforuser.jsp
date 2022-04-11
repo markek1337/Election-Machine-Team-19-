@@ -80,11 +80,13 @@ th:hover {
 
 <script>
 function searchBar() {
+	// Declare variables
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("candidates");
   tr = table.getElementsByTagName("tr");
+//Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[1];
     if (td) {
@@ -120,41 +122,37 @@ function searchBar() {
 // 	  }
 }
 
-function sortTable(n) {
-	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-	  table = document.getElementById("candidates");
+function sortTable() {
+	  var table, rows, switching, i, x, y, shouldSwitch;
+	  table = document.getElementById("myTable");
 	  switching = true;
-	  dir = "asc"; 
+	  /* Make a loop that will continue until
+	  no switching has been done: */
 	  while (switching) {
+	    // Start by saying: no switching is done:
 	    switching = false;
 	    rows = table.rows;
+	    /* Loop through all table rows (except the
+	    first, which contains table headers): */
 	    for (i = 1; i < (rows.length - 1); i++) {
+	      // Start by saying there should be no switching:
 	      shouldSwitch = false;
-	      x = rows[i].getElementsByTagName("TD")[n];
-	      y = rows[i + 1].getElementsByTagName("TD")[n];
-	      if (dir == "asc") {
-	    	  x = x.innerText.toLowerCase();
-	    	  y = y.innerText.toLowerCase();
-	    	  if (x.localeCompare(y, 'en', {numeric: true}) > 0) {
-	          shouldSwitch= true;
-	          break;
-	        }
-	      } else if (dir == "desc") {
-	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-	          shouldSwitch = true;
-	          break;
-	        }
+	      /* Get the two elements you want to compare,
+	      one from current row and one from the next: */
+	      x = rows[i].getElementsByTagName("TD")[0];
+	      y = rows[i + 1].getElementsByTagName("TD")[0];
+	      // Check if the two rows should switch place:
+	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+	        // If so, mark as a switch and break the loop:
+	        shouldSwitch = true;
+	        break;
 	      }
 	    }
 	    if (shouldSwitch) {
+	      /* If a switch has been marked, make the switch
+	      and mark that a switch has been done: */
 	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 	      switching = true;
-	      switchcount ++;      
-	    } else {
-	      if (switchcount == 0 && dir == "asc") {
-	        dir = "desc";
-	        switching = true;
-	      }
 	    }
 	  }
 	}
