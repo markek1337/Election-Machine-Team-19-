@@ -4,4 +4,5 @@ Scrum: https://docs.google.com/spreadsheets/d/1EPOgKsJzAFIK61o6Ag0LTe64R9SUspPWW
 Credentials for Admin Log In:
 
 username: slava
+
 password: password
