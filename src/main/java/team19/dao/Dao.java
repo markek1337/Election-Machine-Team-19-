@@ -301,8 +301,12 @@ public class Dao {
 	
 
 	
+	/**
+	 * Get answers from candidate id ordered by question id
+	 * @param CANDIDATE_ID
+	 * @return
+	 */
 	public Answer readAnswer(String CANDIDATE_ID) {
-
 		Answer politician=null;
 		try {
 			String sql="SELECT * FROM answers WHERE CANDIDATE_ID=? ORDER BY QUESTION_ID;";
@@ -314,7 +318,6 @@ public class Dao {
 				politician.setQUESTION_ID(RS.getInt("QUESTION_ID"));
 				politician.setANSWER(RS.getInt("ANSWER"));
 			}
-			System.out.println("Your lies are ready for processing:)");
 			return politician;
 		}
 		catch(SQLException e) {
@@ -322,6 +325,10 @@ public class Dao {
 			return null;
 		}
 	}
+	/**
+	 * Read all candidate in asc order
+	 * @return
+	 */
 	public ArrayList<Candidate> readAllCandidate() { // Will read all cans in asc order
 		ArrayList<Candidate> list=new ArrayList<>();
 		try {
@@ -347,6 +354,10 @@ public class Dao {
 			return null;
 		}
 	}	
+	/**
+	 * Takes all answers from answers table 
+	 * @return
+	 */
 	public ArrayList<QAnswer> readAllAnswers() {
 		System.out.println("readAllAnswer()");
 		ArrayList<QAnswer> list=new ArrayList<>();
@@ -367,6 +378,10 @@ public class Dao {
 			return null;
 		}
 	}
+	/**
+	 * Takes all question from questions table 
+	 * @return
+	 */
 	public ArrayList<Question> readAllQuestion() {
 		System.out.println("readAllQuestion()");
 		ArrayList<Question> list=new ArrayList<>();
@@ -388,6 +403,12 @@ public class Dao {
 	}
 
 
+
+	/**
+	 * Takes the question by question id from questions table 
+	 * @param id
+	 * @return
+	 */
 	public Question readQuestion(String id) {
 		Question f=null;
 		try {

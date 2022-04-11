@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import team19.data.QAnswer;
 
+
 /**
- * Servlet implementation class SubmitAnswer
+ * Servlet implementation class SubmitAnswer which gives you option to post answers from questionnaire
+ * @author Edgar
+ * @version 1.0
  */
 @WebServlet("/SubmitAnswer")
 public class SubmitAnswer extends HttpServlet {
@@ -39,7 +42,9 @@ public class SubmitAnswer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//	check login	
+		/**
+		 * checks is user loged in as candidate or voter
+		 */
 		boolean isCandidate = false;;
 		String id = null;
 		
@@ -54,9 +59,10 @@ public class SubmitAnswer extends HttpServlet {
 					}
 			}
 		}
-		
-//	get client selection
-		
+
+		/**
+		 *  get client selection
+		 */	
 		ArrayList<QAnswer> selectionList= new ArrayList<QAnswer>(); // Empty ArrayList for the client's answers.
 		
 		for (int i = 1; i <= selectionList.size()+1; i++) {
@@ -78,13 +84,19 @@ public class SubmitAnswer extends HttpServlet {
 
 		request.setAttribute("selectionList", selectionList);		
 
-//		IF U ARE LOGGED IN AS A CANDIDATE
+
+		/**
+		 * If you are login as candidate
+		 */
 		if (isCandidate) {
 			RequestDispatcher rd = request.getRequestDispatcher("");
 			rd.forward(request, response);
 			
 		}
-//		IF U ARE LOGGED IN AS ARE A VOTER / REGULAR USER
+
+		/**
+		 * If you are login as user/voter
+		 */
 		else {
 			RequestDispatcher rd = request.getRequestDispatcher("/FindMatchingCandidates");
 			rd.forward(request, response);

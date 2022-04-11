@@ -16,7 +16,9 @@ import team19.data.Candidate;
 import team19.data.Question;
 
 /**
- * Servlet implementation class ShowQuestions
+ * Servlet implementation class ShowQuestions which gets the questions from db
+ * @author Edgar
+ * @version 1.0
  */
 @WebServlet("/ShowQuestions")
 public class ShowQuestions extends HttpServlet {
@@ -32,15 +34,17 @@ public class ShowQuestions extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
+     * Constructor
      */
-    public ShowQuestions() { // CONSTRUCTOR, leave it here
+    public ShowQuestions() { 
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 * Takes the questions from the list
+	 */ 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Question> list=null;
 		if(dao.getConnection())
