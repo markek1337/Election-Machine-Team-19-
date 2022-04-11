@@ -14,6 +14,11 @@ import javax.servlet.http.HttpSession;
 import team19.dao.Dao;
 import team19.adminfeatures.Candidates;
 
+/**
+ * Servlet reading and showing all the candidates from the database
+ * @author slava
+ * @version 1.0
+ */
 @WebServlet(name = "ShowCandidatesForUser",
 			urlPatterns = {"/showcandidatesforuser"}
 			)
@@ -27,6 +32,7 @@ public class ShowCandidatesForUser extends HttpServlet {
 		HttpSession session = request.getSession();
 				
 		Dao dao = new Dao();
+		// creating an array 'candidates' which stores all the information about the candidates.
 		ArrayList<Candidates> candidates = dao.readAllCandidates();
 				
 		session.setAttribute("allcandidates", candidates);

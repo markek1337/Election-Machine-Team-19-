@@ -13,6 +13,11 @@ import javax.servlet.http.HttpSession;
 import team19.dao.Dao;
 import team19.adminfeatures.Candidates;
 
+/**
+ * Servlet showing information about candidate from database chosen by id
+ * @author slava
+ * @version 1.0
+ */
 @WebServlet(name = "CandidatesInfo",
 			urlPatterns = {"/candidatesinfo"}
 			)

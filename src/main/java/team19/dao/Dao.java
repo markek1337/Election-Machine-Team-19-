@@ -184,6 +184,10 @@ public class Dao {
 		return count;
 	}
 	
+	/**
+	 * Method for reading all candidates from database
+	 * @return
+	 */
 	public ArrayList<Candidates> readAllCandidates() {
 		
 		ArrayList<Candidates> list = new ArrayList<>();
@@ -214,6 +218,11 @@ public class Dao {
 		return list;
 	}
 	
+	/**
+	 * Method to get information about candidate based on id
+	 * @param id
+	 * @return
+	 */
 	public Candidates getCandidateInfo(int id) {
 		Candidates result = null;
 		String sql = "select * from CANDIDATES where CANDIDATE_ID = ?";
