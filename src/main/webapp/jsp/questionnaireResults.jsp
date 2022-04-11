@@ -23,10 +23,7 @@
        	</div>
        	<div class="container5">
 <%--    <%@ include file="../components/navbar.jsp" %>  --%>
-
-        
-        <br><br><br><h2>Your Results</h2>
-       
+   
 	        <h5>Thank you for successfully completing our questionnaire!
 	            <br><br>
 	            Now you can see best candidates for you.
@@ -261,7 +258,7 @@
 
 
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>                
-               <button class="button-main button1"><a href="../index.html"><b>Home</b></a></button>
+               <button class="button-main button1"><a href="../index.jsp"><b>Home</b></a></button>
 
         	</div>
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>

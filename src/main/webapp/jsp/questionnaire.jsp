@@ -271,7 +271,7 @@
 		
 		function toMain()
 		{
-			window.location = "/index.html";
+			window.location = "/index.jsp";
 		}
 	</script>
 
