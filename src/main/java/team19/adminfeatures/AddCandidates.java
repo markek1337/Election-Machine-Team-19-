@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import team19.dao.Dao;
 
+/**
+ * This is a servlet which is responsible for adding new candidates to the database.
+ * @author markpetrov
+ * @version 1.0
+ */
 @WebServlet(
 			name = "AddCandidates",
 			urlPatterns = {"/addcandidates"}

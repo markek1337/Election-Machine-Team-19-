@@ -12,6 +12,13 @@ import javax.servlet.http.HttpSession;
 
 import team19.dao.Dao;
 
+
+
+/**
+ * This servlet is responsible for deleting candidates from database.
+ * @author markpetrov
+ * @version 1.0
+ */
 @WebServlet(
 			name = "DeleteCandidates",
 			urlPatterns = "/deletecandidates"
@@ -62,6 +69,11 @@ public class DeleteCandidates extends HttpServlet {
 		
 	}
 	
+	/**
+	 * This method is setting values from form to all candidates attributes.
+	 * @param request
+	 * @return
+	 */
 	private Candidates readCandidate (HttpServletRequest request) {
 		
 		Candidates candidate = new Candidates();

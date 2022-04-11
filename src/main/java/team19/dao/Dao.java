@@ -15,6 +15,11 @@ import team19.data.QAnswer;
 import team19.data.Question;
 
 
+/**
+ * This class is responsible for all the interactions with SQL database.
+ * @author markpetrov
+ * @version 1.0
+ */
 public class Dao {
 	private Connection conn;
 	private String url;
@@ -96,6 +101,17 @@ public class Dao {
 		}
 	}
 	
+	/**
+	 * Method is responsible for executing the sql query 'inserting'.
+	 * @param surname
+	 * @param firstname
+	 * @param party
+	 * @param location
+	 * @param age
+	 * @param reason
+	 * @param goals
+	 * @param profession
+	 */
 	public void addCandidate (String surname, String firstname, String party, String location, int age, String reason, String goals, String profession) {
 		
 		String sql = "insert into candidates (SURNAME, FIRSTNAME, PARTY, LOCATION, AGE, REASON_FOR_RUNNING, AIMS_AND_GOALS, PROFESSION) values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -120,6 +136,11 @@ public class Dao {
 		}
 	}
 	
+	/**
+	 * This method is responsible for getting user salt by executing 'select' statement based on username.
+	 * @param username
+	 * @return
+	 */
 	public String getUserSalt (String username) {
 		
 		String result = "";
@@ -142,6 +163,11 @@ public class Dao {
 		return result;
 	}
 	
+	/**
+	 * This method is responsible for getting user password hash by 'select' query based on the users username.
+	 * @param username
+	 * @return
+	 */
 	public String getUserPasswordHash (String username) {
 		
 		String result = "";
@@ -166,6 +192,11 @@ public class Dao {
 	}
 	
 
+	/**
+	 * This method is responsible for deleting candidate from the database.
+	 * @param candidate
+	 * @return
+	 */
 	public int deleteCandidate (Candidates candidate) {
 		
 		int count = 0;
@@ -246,6 +277,11 @@ public class Dao {
 		return result;
 	}
 	
+	/**
+	 * This method is responsible for updating info about candidates in the database.
+	 * @param candidate
+	 * @return
+	 */
 	public int updateCandidates(Candidates candidate) {
 		int count = 0;
 		String sql = "update CANDIDATES set SURNAME = ?, FIRSTNAME = ?, PARTY = ?, LOCATION = ?, AGE = ?, REASON_FOR_RUNNING = ?, AIMS_AND_GOALS = ?, PROFESSION = ? where CANDIDATE_ID = ?";
@@ -291,16 +327,11 @@ public class Dao {
 		}
 	}
 	
-	
 	private ResultSet getString(String string) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	
-
-	
 	/**
 	 * Get answers from candidate id ordered by question id
 	 * @param CANDIDATE_ID
