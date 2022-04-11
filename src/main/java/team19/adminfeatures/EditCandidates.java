@@ -13,6 +13,13 @@ import javax.servlet.http.HttpSession;
 import team19.dao.Dao;
 import team19.adminfeatures.Candidates;
 
+
+
+/**
+ * This servlet is responsible for editing information about the candidate
+ * @author markpetrov
+ * @version 1.0
+ */
 @WebServlet(name = "EditCandidates",
 			urlPatterns = {"/editcandidates"}
 			)
@@ -63,6 +70,11 @@ public class EditCandidates extends HttpServlet {
 		response.sendRedirect("/showcandidates");
 	}
 	
+	/**
+	 * This method assignes values from form to all candidates attributes.
+	 * @param request
+	 * @return
+	 */
 	private Candidates readCandidate (HttpServletRequest request) {
 		
 		Candidates candidate = new Candidates();

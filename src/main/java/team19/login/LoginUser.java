@@ -9,6 +9,13 @@ import javax.servlet.http.HttpSession;
 
 import team19.dao.Dao;
 
+
+
+/**
+ * This servlet is respnsible for log in operation.
+ * @author markpetrov
+ * @version 1.0
+ */
 @WebServlet(name = "LoginUser",
 			urlPatterns = {"/loginuser"}
 			)
@@ -27,10 +34,10 @@ public class LoginUser extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		// String role = request.getParameter("roles");
 		
 		// Reading reference values from database
 		String salt = dao.getUserSalt(username);
+		// getting hashed password from the database depending on username
 		String hashpassword = dao.getUserPasswordHash(username);
 		
 		dao.close();

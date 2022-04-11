@@ -19,6 +19,7 @@ public class LogOutUser extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("username");
 		session.invalidate();
+		// removes the session from registry
 		response.sendRedirect("html/login.jsp");
 	}
 }
