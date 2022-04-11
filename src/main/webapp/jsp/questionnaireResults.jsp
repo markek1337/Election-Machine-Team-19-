@@ -261,7 +261,7 @@
 
 
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>                
-               <button class="button-main button1"><a href="../index.html"><b>Home</b></a></button>
+               <button class="button-main button1"><a href="../index.jsp"><b>Home</b></a></button>
 
         	</div>
                 <button class="button-main button1" onclick="window.location.href='/ShowQuestions'"><b>Restart</b></button>
