@@ -23,10 +23,7 @@
        	</div>
        	<div class="container5">
 <%--    <%@ include file="../components/navbar.jsp" %>  --%>
-
-        
-        <br><br><br><h2>Your Results</h2>
-       
+   
 	        <h5>Thank you for successfully completing our questionnaire!
 	            <br><br>
 	            Now you can see best candidates for you.
