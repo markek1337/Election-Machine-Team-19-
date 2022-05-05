@@ -1,6 +1,6 @@
 Team members: Edgar Luks, Vjatšeslav Semjonov, Mark Petrov
 
-Scrum (Server programming):: https://docs.google.com/spreadsheets/d/1EPOgKsJzAFIK61o6Ag0LTe64R9SUspPWWakftZANHsM/edit#gid=56636606
+Scrum (Server programming): https://docs.google.com/spreadsheets/d/1EPOgKsJzAFIK61o6Ag0LTe64R9SUspPWWakftZANHsM/edit#gid=56636606
 
 Scrum (Web Service):https://docs.google.com/spreadsheets/d/1UIH5QpAjVA2Ml7nJscrIlbVBHfDs5Yh_o2-vvryQFyw/edit#gid=56636606
 
