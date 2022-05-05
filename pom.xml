@@ -166,12 +166,13 @@ These are moved to servlet api and not any more in Java SE API
 	</dependency>
 
 
-<!-- This is needed to be able to connect to MySQL database. -->	
+<!-- This is needed to be able to connect to MySQL database.	
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
 		<version>5.1.44</version>
 	</dependency>
+	-->
 	
 
 	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
