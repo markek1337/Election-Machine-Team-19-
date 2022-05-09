@@ -18,6 +18,11 @@ public class QUESTIONS implements Serializable{
 	public QUESTIONS() {
 		super();
 	}
+	
+	public QUESTIONS(String QUESTION) {
+		this.QUESTION = QUESTION;
+	}
+	
 	public int getQUESTION_ID() {
 		return QUESTION_ID;
 	}

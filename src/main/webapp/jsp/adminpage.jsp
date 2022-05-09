@@ -13,6 +13,7 @@
 	<h2>Admin menu</h2>
 	<a href='/showcandidates'>Show all candidates</a><br>
 	<a href='addcandidates.jsp'>Add candidate</a><br>
+	<a href='addquestions.jsp'>Add questions</a><br>
 		<a href='/service/QuestionService/readquestion'>Show all questions</a><br>
 	
 	<br>

@@ -111,5 +111,18 @@ public class QuestionService {
 		//Calling the method readQUESTIONS() of this service
 		readQUESTIONS();		
 	}	
+	
+	@POST
+    @Path("/addquestion")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes("application/x-www-form-urlencoded")
+    public void addQUESTIONS(@FormParam("QUESTION") String QUESTION) {
+        QUESTIONS q=new QUESTIONS(QUESTION);
+        EntityManager em=emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(q);
+        em.getTransaction().commit();
+        readQUESTIONS();
 
+}
 }
