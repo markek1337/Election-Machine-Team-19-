@@ -21,6 +21,13 @@ public class QUESTIONS implements Serializable{
 	public int getQUESTION_ID() {
 		return QUESTION_ID;
 	}
+	
+	public QUESTIONS (String QUESTION, int QUESTION_ID) {
+		super();
+		this.QUESTION_ID = QUESTION_ID;
+		this.QUESTION = QUESTION;
+	}
+	
 	public void setQUESTION_ID(int QUESTION_ID) {
 		this.QUESTION_ID = QUESTION_ID;
 	}

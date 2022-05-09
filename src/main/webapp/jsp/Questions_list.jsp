@@ -58,6 +58,7 @@ th:hover {
 	<td>${QUESTIONS.QUESTION_ID}</td>
 	<td>${QUESTIONS.QUESTION}</td>
 	<td><a href="../QuestionService/deletequestion/${QUESTIONS.QUESTION_ID }"onclick="return window.confirm('Are you sure?');">Delete</a> </td>
+	<td><a href="../QuestionService/readtoupdatequestion/${QUESTIONS.QUESTION_ID }">Edit</a> </td>
 	</tr>
 </c:forEach>
 </table>
