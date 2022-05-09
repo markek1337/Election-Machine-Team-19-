@@ -7,9 +7,9 @@
       
     <version>0.1.0-SNAPSHOT</version>
       
-    <groupId>team19</groupId>
+    <groupId>ElectionMachine</groupId>
       
-    <artifactId>team19</artifactId>
+    <artifactId>ElectionMachine</artifactId>
       
     <properties>
             
@@ -37,7 +37,7 @@
                         
                 <artifactId>libraries-bom</artifactId>
                         
-                <version>25.0.0</version>
+                <version>25.1.0</version>
                         
                 <type>pom</type>
                         
@@ -88,61 +88,19 @@
         </dependency>
             
         <dependency>
-            <groupId>com.google.endpoints</groupId>
-            <artifactId>endpoints-framework</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
             <version>2.0.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.endpoints</groupId>
+            <artifactId>endpoints-framework</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- Test Dependencies -->
+            <!-- I have added manually these dependencies -->
         
-        <!-- This is needed to be able to connect to MySQL database. -->
-<!-- If using MySQL 8, the version should be 8.0.11. -->
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>8.0.28</version>
-	</dependency>
-	
-<!-- The next two are needed to be able to manage database with JPA. 
-		In addition to eclipselink, there are several other libraries, too.
-	Eclipselink JPA API 
--->
-	<dependency>
-		<groupId>org.eclipse.persistence</groupId>
-		<artifactId>org.eclipse.persistence.jpa</artifactId>
-		<version>2.4.2</version>
-	</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
-	Eclipselink JPA Implementation 
--->
-<dependency>
-    <groupId>org.eclipse.persistence</groupId>
-    <artifactId>eclipselink</artifactId>
-    <version>2.5.0</version>
-</dependency>
-
-
-<!-- 
-If using Java 11 or newer add next two.
-These are moved to servlet api and not any more in Java SE API 
- -->
-<dependency>
-    <groupId>javax.xml.bind</groupId>
-    <artifactId>jaxb-api</artifactId>
-    <version>2.3.0</version>
-</dependency>
-<dependency>
-    <groupId>javax.activation</groupId>
-    <artifactId>activation</artifactId>
-    <version>1.1.1</version>
-</dependency>
-
-<!-- BEGIN: Added by Pena -->
-<!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
+        <!-- This dependency is needed for annotations (e.g. @Path, @Consumes, @Produces etc.) in the REST-class-->
 	<dependency>
 	    <groupId>org.glassfish.jersey.media</groupId>
 	    <artifactId>jersey-media-json-jackson</artifactId>
@@ -166,45 +124,22 @@ These are moved to servlet api and not any more in Java SE API
 	</dependency>
 
 
-<!-- This is needed to be able to connect to MySQL database.	
+<!-- This is needed to be able to connect to MySQL database. -->	
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.44</version>
+		<version>8.0.28</version>
 	</dependency>
-	-->
 	
 
-	<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
-		Eclipselink JPA Implementation 
-	-->
-	<dependency>
-	    <groupId>org.eclipse.persistence</groupId>
-	    <artifactId>eclipselink</artifactId>
-	    <version>2.5.0</version>
-	</dependency>
-	
-	
-	
-	<!-- 
-	If using Java 11 or newer add next two.
-	These are moved to servlet api and not any more in Java SE API 
-	 -->
-	<dependency>
-	    <groupId>javax.xml.bind</groupId>
-	    <artifactId>jaxb-api</artifactId>
-	    <version>2.3.0</version>
-	</dependency>
-	<dependency>
-	    <groupId>javax.activation</groupId>
-	    <artifactId>activation</artifactId>
-	    <version>1.1.1</version>
-	</dependency>
-
-<!-- END: Added by Pena -->
-        
-        <!-- Test Dependencies -->
-            
+<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink 
+	Eclipselink JPA Implementation 
+-->
+<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>eclipselink</artifactId>
+    <version>2.5.0</version>
+</dependency>
         <dependency>
                   
             <groupId>junit</groupId>
