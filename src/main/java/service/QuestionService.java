@@ -23,24 +23,24 @@ import javax.ws.rs.core.MediaType;
 
 import app.QUESTIONS;
 
-@Path("/QuestionService")
+@Path("/QuestionService") //Root resource class path
 public class QuestionService {
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("QUESTIONS");
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("QUESTIONS"); // connection to db
 	@Context HttpServletRequest request;
 	@Context HttpServletResponse response;
 	
 	
-	@GET
-	@Path("/readquestion")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void readQUESTIONS() {
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		List<QUESTIONS> list=em.createQuery("select q from QUESTIONS q").getResultList();		
-		em.getTransaction().commit();
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/Questions_list.jsp");
-		request.setAttribute("questionlist", list);
+	@GET //the method accepts only GET-type requests
+	@Path("/readquestion") //path to this method
+	@Produces(MediaType.APPLICATION_JSON) //media type method produces
+	@Consumes(MediaType.APPLICATION_JSON) // media type method accepts
+	public void readQUESTIONS() { 
+		EntityManager em=emf.createEntityManager(); //manages entities given in persistence.xml
+		em.getTransaction().begin();//starts the transaction 
+		List<QUESTIONS> list=em.createQuery("select q from QUESTIONS q").getResultList();	//reads all the data from a database table QUESTIONS and getting list	
+		em.getTransaction().commit();//close the transaction
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/Questions_list.jsp"); //requestDispatcher allows forwarding a request response to a resource
+		request.setAttribute("questionlist", list); //adds attribute to request to take to showquestions.jsp
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
@@ -48,19 +48,19 @@ public class QuestionService {
 			e.printStackTrace();
 		}
 	}
-	@GET
-    @Path("/deletequestion/{QUESTION_ID}")
-    @Produces(MediaType.APPLICATION_JSON)
+	@GET //the method accepts only GET-type requests
+    @Path("/deletequestion/{QUESTION_ID}") //setting QUESTION_ID as a parameter into URL
+    @Produces(MediaType.APPLICATION_JSON) //media type method produces
     public void deleteQuestion(@PathParam("QUESTION_ID") int id) { 
         EntityManager em=emf.createEntityManager();
         em.getTransaction().begin();
-        QUESTIONS a=em.find(QUESTIONS.class, id);
+        QUESTIONS a=em.find(QUESTIONS.class, id); //searches object id from database
         if (a!=null) {
             em.remove(a);//The actual insertion line
         }
         em.getTransaction().commit();
-        //Calling the method readAnswers() of this service
-
+        //Calling the method readQUESTIONS() of this service
+        readQUESTIONS();
         }
 	
 	@PUT
