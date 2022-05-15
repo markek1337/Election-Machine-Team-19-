@@ -5,3 +5,5 @@ Mark Petrov - responsible for Editing Questions (java/team19/service/QuestionSer
 updatequestion)		(webapp/jsp/showupdatequestion.jsp)
 
 Vjatšeslav Semjonov - responsible for Adding Questions (java/team19/service/QuestionService.java/methods: addquestion)		(webapp/jsp/addquestions.jsp)
+
+Edgar Luks - responsible for Deletion Questions (java/team19/service/QuestionService.java/methods: deletequestion, readquestion)		(webapp/jsp/Questions_list.jsp)
