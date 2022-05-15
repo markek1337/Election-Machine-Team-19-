@@ -1,0 +1,5 @@
+
+Contributors: Mark Petrov, Vjatseslav Semjonov, Edgar Luks
+
+Mark Petrov - responsible for Editing Questions (java/team19/service/QuestionService.java/methods: readtoupdatequestion, editquestion,
+updatequestion)		(webapp/jsp/showupdatequestion.jsp)
